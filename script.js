@@ -232,6 +232,17 @@
     window.setTimeout(goToRequestAccess, 0);
   }
 
+  // Same idea, the other direction: the home page's Spotlight "Restricted
+  // & Unapproved Tools" card links here as "approved-tools.html#restricted"
+  // so it lands directly on that tab instead of the default Approved tab.
+  if (document.querySelector('.tool-tab[data-tab="restricted"]') && window.location.hash === "#restricted") {
+    window.setTimeout(function () {
+      activateTab("restricted");
+      var target = document.querySelector(".tools-directory");
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  }
+
   /* ---- Approved AI Tools — category filter pills ----------------------
      Lives on approved-tools.html only; no-ops everywhere else since the
      selectors simply won't match. */
@@ -258,6 +269,42 @@
       applyFilter(pill.getAttribute("data-filter"));
     });
   });
+
+  /* ---- Latest Updates — single-slide carousel -------------------------
+     One real screenshot per slide (the announcement copy is baked into
+     each image), prev/next + dots just translate the track. Loops both
+     ways so "next" from the last slide wraps to the first. */
+  var updatesCarousel = document.getElementById("updatesCarousel");
+  if (updatesCarousel) {
+    var updatesTrack = document.getElementById("updatesTrack");
+    var updatesSlides = updatesTrack.querySelectorAll(".updates-slide");
+    var updatesDots = document.getElementById("updatesDots");
+    var updatesPrev = document.getElementById("updatesPrev");
+    var updatesNext = document.getElementById("updatesNext");
+    var updatesIndex = 0;
+
+    updatesSlides.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "updates-carousel__dot";
+      dot.setAttribute("aria-label", "Go to update " + (i + 1));
+      dot.addEventListener("click", function () { goToSlide(i); });
+      updatesDots.appendChild(dot);
+    });
+    var updatesDotEls = updatesDots.querySelectorAll(".updates-carousel__dot");
+
+    function goToSlide(i) {
+      updatesIndex = (i + updatesSlides.length) % updatesSlides.length;
+      updatesTrack.style.transform = "translateX(-" + updatesIndex * 100 + "%)";
+      updatesDotEls.forEach(function (dot, j) {
+        dot.classList.toggle("is-active", j === updatesIndex);
+      });
+    }
+
+    updatesPrev.addEventListener("click", function () { goToSlide(updatesIndex - 1); });
+    updatesNext.addEventListener("click", function () { goToSlide(updatesIndex + 1); });
+    goToSlide(0);
+  }
 
   // "Request review" links in the Restricted & Unapproved tab point back at
   // the Intake Portal card on the Approved tab — jump there directly
