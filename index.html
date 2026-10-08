@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skydance AI Central</title>
+<meta name="description" content="Skydance AI Central — approved AI platforms, tools, training and governance in one place." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+<link rel="shortcut icon" href="assets/favicon/favicon-32x32.png" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Cosmos background (fixed, behind everything). Every section BELOW the
+     hero has its own fully opaque background (solid black or the brand-blue
+     band), so this nebula is only ever visible through the hero itself. -->
+<div class="cosmos" aria-hidden="true"></div>
+<div class="cosmos-scrim-top" aria-hidden="true"></div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href="index.html" aria-label="Skydance AI Central — Home">
+      <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+      <span class="brand__unit">AI Central</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <div class="nav-item" data-panel="about">
+        <a class="nav-trigger" href="#about" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">About<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="explore">
+        <a class="nav-trigger" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Explore<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="studio">
+        <a class="nav-trigger" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Studio<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="learning">
+        <a class="nav-trigger" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Learning<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="trust">
+        <a class="nav-trigger" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Trust<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="community">
+        <a class="nav-trigger" href="#" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Community<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Inline search: click the icon, a single input field reveals
+           right there — no modal, no suggestions/results list. -->
+      <div class="search-inline" id="searchInline">
+        <button class="icon-btn" id="searchTrigger" aria-label="Search AI Central" aria-expanded="false" aria-controls="searchPopover">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </button>
+        <div class="search-popover" id="searchPopover" aria-hidden="true">
+          <div class="search-popover__field">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input type="text" id="searchInput" placeholder="Search AI Central…" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-gold btn-sm" href="#request-access">Request access</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Full-width flyout panel (replicates skydance.com's nav pattern): a
+       single black block drops below the ENTIRE header on hover/focus of
+       any top-level item, rather than a per-item floating card. Only the
+       column matching the hovered pillar is shown; script.js also shifts
+       the panel's left padding to line up under the active trigger. -->
+  <div class="nav-flyout" id="navFlyout" aria-hidden="true">
+    <div class="nav-flyout__inner">
+      <div class="nav-flyout__col" data-panel="about">
+        <a href="#">Our Purpose</a>
+        <a href="#">Vision &amp; Mission</a>
+        <a href="#">Initiatives</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="explore">
+        <a href="#">Platforms</a>
+        <a href="approved-tools.html">Approved AI Tools</a>
+        <a href="#">Connectors &amp; Integrations</a>
+        <a href="#">Tool Guidance</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="studio">
+        <a href="#">Intake Portal</a>
+        <a href="#">Sandbox</a>
+        <a href="#">DEX</a>
+        <a href="#">Creative Studio</a>
+        <a href="#">Content Lab</a>
+        <a href="#">Engineering Standards</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="learning">
+        <a href="#">LearnAI@WBD</a>
+        <a href="#">Training &amp; Resources</a>
+        <a href="#">Roadshows</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="trust">
+        <a href="#">Responsible AI</a>
+        <a href="#">Policies &amp; Governance</a>
+        <a href="#">Reviews &amp; Approvals</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="community">
+        <a href="#">Events &amp; Updates</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav — native <details> accordions, one per pillar. No extra JS
+     needed for expand/collapse; fully keyboard- and screen-reader-friendly. -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile" data-open="false">
+  <button class="mobile-nav-close btn-ghost" id="navClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+  </button>
+
+  <details class="mobile-accordion">
+    <summary>About<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Our Purpose</a>
+    <a href="#">Vision &amp; Mission</a>
+    <a href="#">Initiatives</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Explore<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Platforms</a>
+    <a href="approved-tools.html">Approved AI Tools</a>
+    <a href="#">Connectors &amp; Integrations</a>
+    <a href="#">Tool Guidance</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Studio<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Intake Portal</a>
+    <a href="#">Sandbox</a>
+    <a href="#">DEX</a>
+    <a href="#">Creative Studio</a>
+    <a href="#">Content Lab</a>
+    <a href="#">Engineering Standards</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Learning<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">LearnAI@WBD</a>
+    <a href="#">Training &amp; Resources</a>
+    <a href="#">Roadshows</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Trust<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Responsible AI</a>
+    <a href="#">Policies &amp; Governance</a>
+    <a href="#">Reviews &amp; Approvals</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Community<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Events &amp; Updates</a>
+    <a href="#">Support</a>
+  </details>
+
+  <a class="btn btn-gold" href="#request-access">Request access</a>
+</nav>
+
+<main id="main">
+
+  <!-- ======================= HERO (the only section with the cosmos) ======================= -->
+  <section class="hero" id="top">
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="eyebrow">Skydance &middot; AI Central</p>
+
+      <h1>Every problem has an AI answer. <span class="accent">We help you find it.</span></h1>
+
+      <p class="hero__sub">
+        One home for every approved AI platform, tool and guideline at Skydance — tell us what you're trying to do.
+      </p>
+
+      <div class="hero__ctas">
+        <a class="btn btn-gold" href="#platforms">Explore approved tools</a>
+        <a class="btn btn-ghost" href="#value">See the business impact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABOUT THE AI COE (opaque brand-blue band) ======================= -->
+  <section id="about" class="about-band">
+    <div class="container about-band__grid">
+      <div class="about-band__copy">
+        <p class="eyebrow eyebrow--accent">About AI Central</p>
+        <h2>The single front door for AI at Skydance.</h2>
+        <p class="about-band__desc">
+          AI Central is Skydance's central hub for discovering, accessing and scaling AI
+          responsibly. From approved tools and enterprise platforms to governance frameworks and hands-on
+          learning, everything you need is here. Whether you're exploring for the first time or building
+          production-grade AI applications, AI Central guides every step of your journey.
+        </p>
+      </div>
+
+      <div class="metric-block">
+        <p class="metric-block__eyebrow">AI Central at a glance</p>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-card__value">15K</div>
+            <div class="metric-card__label">AI Central page views</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__value">6K</div>
+            <div class="metric-card__label">Training resource views</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__value">5.4K</div>
+            <div class="metric-card__label">Reads of AI Policy &amp; Principles</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__value">13+</div>
+            <div class="metric-card__label">Approved AI tools</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__value">5</div>
+            <div class="metric-card__label">Enterprise platforms</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__value">100%</div>
+            <div class="metric-card__label">Governed &amp; on-brand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TOOLS & PLATFORMS (opaque black, tabbed) ======================= -->
+  <section id="platforms" class="platforms">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--accent">AI Central</p>
+          <h2>Everything you need to build with AI.</h2>
+          <p>Best-in-class platforms and approved tools, designed to support discovery, development, and deployment of AI.</p>
+        </div>
+      </div>
+
+      <div class="tool-tabs" role="tablist" aria-label="Tools and platforms">
+        <button class="tool-tab is-active" type="button" role="tab" id="tab-internal" aria-selected="true" aria-controls="panel-internal" data-tab="internal">Platforms</button>
+        <button class="tool-tab" type="button" role="tab" id="tab-external" aria-selected="false" aria-controls="panel-external" tabindex="-1" data-tab="external">Approved Tools</button>
+      </div>
+
+      <!-- In-house platforms. CTA reads "Open platform" — these are already
+           owned/governed, not a third-party access request. -->
+      <div class="tool-panel is-active" id="panel-internal" role="tabpanel" aria-labelledby="tab-internal" data-panel="internal">
+        <div class="platform-grid">
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path></svg>
+            </span>
+            <span class="platform-card__name">Intake Portal</span>
+            <span class="platform-card__desc">Submit and track new AI tool and project requests.</span>
+            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            </span>
+            <span class="platform-card__name">Sandbox</span>
+            <span class="platform-card__desc">A safe space to draft and test ideas before going live.</span>
+            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+            </span>
+            <span class="platform-card__name">DEX</span>
+            <span class="platform-card__desc">Data &amp; experimentation hub for evaluating models.</span>
+            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+            </span>
+            <span class="platform-card__name">Creative Studio</span>
+            <span class="platform-card__desc">Generative design and content creation workspace.</span>
+            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- External, third-party AI tools. CTA reads "Request access" since
+           these go through an approval step, unlike the platforms above. -->
+      <div class="tool-panel" id="panel-external" role="tabpanel" aria-labelledby="tab-external" data-panel="external" hidden>
+        <span id="request-access" class="anchor-offset" aria-hidden="true"></span>
+        <div class="platform-grid">
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 1322.9 1147.5" width="23" height="20" fill="#0078D4"><path d="m711.19 265.2c-27.333 0-46.933 3.07-58.8 9.33 27.067-80.267 47.6-210.13 168-210.13 114.93 0 108.4 138.27 157.87 200.8zm107.33 112.93c-35.467 125.2-70 251.2-110.13 375.33-12.133 36.4-45.733 61.6-84 61.6h-136.27c9.3333-14 16.8-28.933 21.467-45.733 35.467-125.07 70-251.07 110.13-375.33 12.133-36.4 45.733-61.6 84-61.6h136.27c-9.3333 14-16.8 28.934-21.467 45.734m-316.13 704.8c-114.93 0-108.4-138.13-157.87-200.67h267.07c27.467 0 47.067-3.07 58.8-9.33-27.067 80.266-47.6 210-168 210m777.47-758.93h0.93c-32.667-38.266-82.267-57.866-146.67-57.866h-36.4c-34.533-2.8-65.333-26.134-76.533-58.8l-36.4-103.6c-21.463-61.737-80.263-103.74-145.73-103.74h-475.07c-175.6 0-251.2 225.07-292.27 361.33-38.267 127.07-126 341.73-24.267 462.13 46.667 55.067 116.67 57.867 183.07 57.867 34.533 2.8 65.333 26.133 76.533 58.8l36.4 103.6c21.467 61.733 80.267 103.73 145.6 103.73h475.2c175.47 0 251.07-225.07 292.27-361.33 30.8-100.8 68.133-224.93 66.267-324.8 0-50.534-11.2-100-42.933-137.33"></path></svg>
+            </span>
+            <span class="platform-card__name">Microsoft Copilot</span>
+            <span class="platform-card__desc">Everyday assistant across email, docs and meetings.</span>
+            <span class="platform-card__cta">Request access <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#D97757"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"></path></svg>
+            </span>
+            <span class="platform-card__name">Claude</span>
+            <span class="platform-card__desc">Long-context assistant for research and review workflows.</span>
+            <span class="platform-card__cta">Request access <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#050038"><path d="M17.392 0H13.9L17 4.808 10.444 0H6.949l3.102 6.3L3.494 0H0l3.05 8.131L0 24h3.494L10.05 6.985 6.949 24h3.494L17 5.494 13.899 24h3.493L24 3.672 17.392 0z"></path></svg>
+            </span>
+            <span class="platform-card__name">Miro</span>
+            <span class="platform-card__desc">Collaborative whiteboarding for workshops and planning.</span>
+            <span class="platform-card__cta">Request access <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+          <a class="platform-card" href="#">
+            <span class="platform-card__icon platform-card__icon--tile" aria-hidden="true">
+              <svg viewBox="0 0 56 54" width="38" height="38"><defs><style>.fflogo-1{fill:#eb1000;}.fflogo-2{fill:#fff;}</style></defs><rect class="fflogo-1" width="56" height="54" rx="9.91" ry="9.91"></rect><path class="fflogo-2" d="M21.57,37.57c0,.22-.1.32-.32.32h-4.57c-.18,0-.25-.13-.25-.32V13.94c0-.21.07-.29.28-.29h14.65c.25,0,.31.07.35.31l.41,3.99c.04.22-.07.32-.31.32h-10.24v5.62h9.23c.21,0,.31.07.31.29v4.04c0,.22-.11.29-.29.29h-9.25v9.06Z"></path><path class="fflogo-2" d="M34.86,19.81c0-.21.1-.31.31-.31h4.55c.24,0,.31.06.31.3v17.74c0,.24-.07.34-.34.34h-4.46c-.25,0-.37-.11-.37-.35v-17.73Z"></path><path class="fflogo-2" d="M38.56,15.5l2.26.51c.89.2,1.51-.86.89-1.53l-1.57-1.7c-.21-.22-.29-.53-.22-.83l.51-2.26c.2-.89-.87-1.5-1.54-.88l-1.7,1.57c-.22.21-.54.29-.83.22l-2.26-.51c-.89-.2-1.51.86-.89,1.53l1.57,1.7c.21.22.29.53.22.83l-.51,2.26c-.2.89.87,1.5,1.54.88l1.7-1.57c.22-.21.54-.29.83-.22Z"></path></svg>
+            </span>
+            <span class="platform-card__name">Adobe Firefly</span>
+            <span class="platform-card__desc">Generative image and design tooling for Creative teams.</span>
+            <span class="platform-card__cta">Request access <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </a>
+        </div>
+        <div class="tool-panel__footer">
+          <a class="btn btn-ghost btn-sm" href="approved-tools.html">See all approved tools <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CREATING VALUE ACROSS THE BUSINESS (brand-blue band) ======================= -->
+  <section id="value" class="value-band">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <div>
+          <p class="eyebrow eyebrow--accent">Impact</p>
+          <h2>Creating value across the business.</h2>
+          <p>AI Central is already helping teams across Skydance ship faster, safer and more consistently.</p>
+        </div>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <span class="value-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+          </span>
+          <div class="value-card__value">3&times;</div>
+          <div class="value-card__label">Faster campaign ideation with approved tools</div>
+        </div>
+        <div class="value-card">
+          <span class="value-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"></path><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path></svg>
+          </span>
+          <div class="value-card__value">12+</div>
+          <div class="value-card__label">AI-assisted workflows now in pilot across Production</div>
+        </div>
+        <div class="value-card">
+          <span class="value-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+          </span>
+          <div class="value-card__value">100%</div>
+          <div class="value-card__label">Of new builds reviewed against AI engineering standards</div>
+        </div>
+        <div class="value-card">
+          <span class="value-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+          </span>
+          <div class="value-card__value">0</div>
+          <div class="value-card__label">Unapproved tools running in production, by policy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+        <p>AI Central. Approved tools, guidance and support for building responsibly with AI.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#">Explore</a>
+        <a href="#">Studio</a>
+        <a href="#">Learning</a>
+        <a href="#">Trust</a>
+        <a href="#">Community</a>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Skydance. All rights reserved. This hub is part of the Skydance–WBD integration; employee data is governed by your company's existing workforce privacy notice.</span>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

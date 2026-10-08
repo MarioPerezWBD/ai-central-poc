@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Approved AI Tools — Skydance AI Central</title>
+<meta name="description" content="Every AI platform and tool cleared for use, with the access path for each — browse by category." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+<link rel="shortcut icon" href="assets/favicon/favicon-32x32.png" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Cosmos background (fixed, behind everything). On this page it's only
+     visible through the compact page-header band at the top; every section
+     below has its own opaque surface, same rule as the home page. -->
+<div class="cosmos" aria-hidden="true"></div>
+<div class="cosmos-scrim-top" aria-hidden="true"></div>
+
+<!-- ======================= HEADER (shared across pages) ======================= -->
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href="index.html" aria-label="Skydance AI Central — Home">
+      <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+      <span class="brand__unit">AI Central</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <div class="nav-item" data-panel="about">
+        <a class="nav-trigger" href="index.html#about" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">About<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="explore">
+        <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout" aria-current="page">Explore<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="studio">
+        <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Studio<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="learning">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Learning<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="trust">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Trust<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="community">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Community<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-inline" id="searchInline">
+        <button class="icon-btn" id="searchTrigger" aria-label="Search AI Central" aria-expanded="false" aria-controls="searchPopover">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </button>
+        <div class="search-popover" id="searchPopover" aria-hidden="true">
+          <div class="search-popover__field">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input type="text" id="searchInput" placeholder="Search AI Central…" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-gold btn-sm" href="index.html#request-access">Request access</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-flyout" id="navFlyout" aria-hidden="true">
+    <div class="nav-flyout__inner">
+      <div class="nav-flyout__col" data-panel="about">
+        <a href="index.html#about">Our Purpose</a>
+        <a href="index.html#about">Vision &amp; Mission</a>
+        <a href="index.html#about">Initiatives</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="explore">
+        <a href="index.html#platforms">Platforms</a>
+        <a href="approved-tools.html" aria-current="page">Approved AI Tools</a>
+        <a href="#">Connectors &amp; Integrations</a>
+        <a href="#">Tool Guidance</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="studio">
+        <a href="index.html#platforms">Intake Portal</a>
+        <a href="index.html#platforms">Sandbox</a>
+        <a href="index.html#platforms">DEX</a>
+        <a href="index.html#platforms">Creative Studio</a>
+        <a href="index.html#platforms">Content Lab</a>
+        <a href="index.html#platforms">Engineering Standards</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="learning">
+        <a href="#">LearnAI@WBD</a>
+        <a href="#">Training &amp; Resources</a>
+        <a href="#">Roadshows</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="trust">
+        <a href="#">Responsible AI</a>
+        <a href="#">Policies &amp; Governance</a>
+        <a href="#">Reviews &amp; Approvals</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="community">
+        <a href="#">Events &amp; Updates</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav — same accordion pattern as the home page. -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile" data-open="false">
+  <button class="mobile-nav-close btn-ghost" id="navClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+  </button>
+
+  <details class="mobile-accordion">
+    <summary>About<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="index.html#about">Our Purpose</a>
+    <a href="index.html#about">Vision &amp; Mission</a>
+    <a href="index.html#about">Initiatives</a>
+  </details>
+  <details class="mobile-accordion" open>
+    <summary>Explore<span class="mobile-accordion__marker" aria-hidden="true">–</span></summary>
+    <a href="index.html#platforms">Platforms</a>
+    <a href="approved-tools.html" aria-current="page">Approved AI Tools</a>
+    <a href="#">Connectors &amp; Integrations</a>
+    <a href="#">Tool Guidance</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Studio<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="index.html#platforms">Intake Portal</a>
+    <a href="index.html#platforms">Sandbox</a>
+    <a href="index.html#platforms">DEX</a>
+    <a href="index.html#platforms">Creative Studio</a>
+    <a href="index.html#platforms">Content Lab</a>
+    <a href="index.html#platforms">Engineering Standards</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Learning<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">LearnAI@WBD</a>
+    <a href="#">Training &amp; Resources</a>
+    <a href="#">Roadshows</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Trust<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Responsible AI</a>
+    <a href="#">Policies &amp; Governance</a>
+    <a href="#">Reviews &amp; Approvals</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Community<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="#">Events &amp; Updates</a>
+    <a href="#">Support</a>
+  </details>
+
+  <a class="btn btn-gold" href="index.html#request-access">Request access</a>
+</nav>
+
+<main id="main">
+
+  <!-- ======================= PAGE HEADER (compact, brand-blue band — same
+       gradient treatment as the home page's About band, scaled down for an
+       internal/utility page instead of a full cosmos hero) ======================= -->
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow eyebrow--accent">Explore</p>
+      <h1>Approved AI Tools</h1>
+      <p>Every AI platform and tool cleared for use, with the access path for each one — plus what's restricted or still under review, and why.</p>
+    </div>
+  </section>
+
+  <!-- ======================= TOOLS DIRECTORY ======================= -->
+  <section class="tools-directory">
+    <div class="container">
+
+      <!-- Top-level tabs split fundamentally different content: what's
+           cleared for use vs. what's restricted or still unreviewed. The
+           category filter below only makes sense *within* "Approved" —
+           mixing "restricted" in as just another pill would imply it's
+           another flavor of approved, which it isn't. -->
+      <div class="tool-tabs" role="tablist" aria-label="Approved vs. restricted tools">
+        <button class="tool-tab is-active" type="button" role="tab" id="tab-approved" aria-selected="true" aria-controls="panel-approved" data-tab="approved">Approved Tools</button>
+        <button class="tool-tab" type="button" role="tab" id="tab-restricted" aria-selected="false" aria-controls="panel-restricted" tabindex="-1" data-tab="restricted">Restricted &amp; Unapproved</button>
+      </div>
+
+      <div class="tool-panel is-active" id="panel-approved" role="tabpanel" aria-labelledby="tab-approved" data-panel="approved">
+
+      <div class="filter-pills" role="group" aria-label="Filter tools by category">
+        <button class="filter-pill is-active" type="button" data-filter="all">All tools <span class="filter-pill__count">18</span></button>
+        <button class="filter-pill" type="button" data-filter="platforms">Platforms</button>
+        <button class="filter-pill" type="button" data-filter="assistants">AI Assistants</button>
+        <button class="filter-pill" type="button" data-filter="creative">Creative &amp; Media</button>
+        <button class="filter-pill" type="button" data-filter="collaboration">Collaboration</button>
+      </div>
+
+      <div class="tools-grid" id="toolsGrid">
+
+        <!-- Platforms — shown first to give in-house builds top billing
+             over third-party tools. -->
+        <article class="tool-card" data-category="platforms" id="intake-portal">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--platform">Platform</span>
+          </div>
+          <span class="tool-card__name">One Tech Intake Portal</span>
+          <span class="tool-card__desc">Submit a request for any AI tool that isn't on this list yet.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="#">Open platform <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="platforms">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--platform">Platform</span>
+          </div>
+          <span class="tool-card__name">AI Sandbox</span>
+          <span class="tool-card__desc">A safe space to draft and test new AI ideas before going live.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="#">Open platform <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="platforms">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--platform">Platform</span>
+          </div>
+          <span class="tool-card__name">AI DEX</span>
+          <span class="tool-card__desc">Data &amp; experimentation hub for evaluating and comparing models.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="#">Open platform <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="platforms">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--platform">Platform</span>
+          </div>
+          <span class="tool-card__name">AI Creative Studio</span>
+          <span class="tool-card__desc">In-house generative design &amp; content creation workspace.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="index.html#platforms">Open platform <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <!-- AI Assistants -->
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 1322.9 1147.5" width="23" height="20" fill="#0078D4"><path d="m711.19 265.2c-27.333 0-46.933 3.07-58.8 9.33 27.067-80.267 47.6-210.13 168-210.13 114.93 0 108.4 138.27 157.87 200.8zm107.33 112.93c-35.467 125.2-70 251.2-110.13 375.33-12.133 36.4-45.733 61.6-84 61.6h-136.27c9.3333-14 16.8-28.933 21.467-45.733 35.467-125.07 70-251.07 110.13-375.33 12.133-36.4 45.733-61.6 84-61.6h136.27c-9.3333 14-16.8 28.934-21.467 45.734m-316.13 704.8c-114.93 0-108.4-138.13-157.87-200.67h267.07c27.467 0 47.067-3.07 58.8-9.33-27.067 80.266-47.6 210-168 210m777.47-758.93h0.93c-32.667-38.266-82.267-57.866-146.67-57.866h-36.4c-34.533-2.8-65.333-26.134-76.533-58.8l-36.4-103.6c-21.463-61.737-80.263-103.74-145.73-103.74h-475.07c-175.6 0-251.2 225.07-292.27 361.33-38.267 127.07-126 341.73-24.267 462.13 46.667 55.067 116.67 57.867 183.07 57.867 34.533 2.8 65.333 26.133 76.533 58.8l36.4 103.6c21.467 61.733 80.267 103.73 145.6 103.73h475.2c175.47 0 251.07-225.07 292.27-361.33 30.8-100.8 68.133-224.93 66.267-324.8 0-50.534-11.2-100-42.933-137.33"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Microsoft Copilot</span>
+          <span class="tool-card__desc">Everyday AI assistant across Outlook, Teams, Word, Excel and PowerPoint.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#D97757"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Claude</span>
+          <span class="tool-card__desc">Long-context assistant for research, writing and review workflows.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#D97757"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Claude Code</span>
+          <span class="tool-card__desc">Claude's terminal-native coding agent for engineering workflows.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#000000"><path d="M23.922 16.997C23.061 18.492 18.063 22.02 12 22.02 5.937 22.02.939 18.492.078 16.997A.641.641 0 0 1 0 16.741v-2.869a.883.883 0 0 1 .053-.22c.372-.935 1.347-2.292 2.605-2.656.167-.429.414-1.055.644-1.517a10.098 10.098 0 0 1-.052-1.086c0-1.331.282-2.499 1.132-3.368.397-.406.89-.717 1.474-.952C7.255 2.937 9.248 1.98 11.978 1.98c2.731 0 4.767.957 6.166 2.093.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086.23.462.477 1.088.644 1.517 1.258.364 2.233 1.721 2.605 2.656a.841.841 0 0 1 .053.22v2.869a.641.641 0 0 1-.078.256Zm-11.75-5.992h-.344a4.359 4.359 0 0 1-.355.508c-.77.947-1.918 1.492-3.508 1.492-1.725 0-2.989-.359-3.782-1.259a2.137 2.137 0 0 1-.085-.104L4 11.746v6.585c1.435.779 4.514 2.179 8 2.179 3.486 0 6.565-1.4 8-2.179v-6.585l-.098-.104s-.033.045-.085.104c-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.545-3.508-1.492a4.359 4.359 0 0 1-.355-.508Zm2.328 3.25c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm-5 0c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm3.313-6.185c.136 1.057.403 1.913.878 2.497.442.544 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.15.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.319-.862-2.824-1.025-1.487-.161-2.192.138-2.533.529-.269.307-.437.808-.438 1.578v.021c0 .265.021.562.063.893Zm-1.626 0c.042-.331.063-.628.063-.894v-.02c-.001-.77-.169-1.271-.438-1.578-.341-.391-1.046-.69-2.533-.529-1.505.163-2.347.537-2.824 1.025-.462.472-.705 1.179-.705 2.319 0 1.211.175 1.926.558 2.361.365.414 1.084.751 2.657.751 1.21 0 1.902-.394 2.344-.938.475-.584.742-1.44.878-2.497Z"></path></svg>
+            </span>
+            <span class="tool-card__badge">Guidelines only</span>
+          </div>
+          <span class="tool-card__name">GitHub Copilot</span>
+          <span class="tool-card__desc">AI pair programmer built into the IDE and GitHub pull-request workflow.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#000000"><path d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Cursor</span>
+          <span class="tool-card__desc">AI-native code editor for engineering teams shipping production code.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="assistants">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Daisy — Streaming ChatBot</span>
+          <span class="tool-card__desc">Free-form Q&amp;A on the streaming business — metrics, queries and auto-generated charts.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="#">Request in Slack <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <!-- Creative & Media -->
+        <article class="tool-card" data-category="creative">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--tile" aria-hidden="true">
+              <svg viewBox="0 0 56 54" width="38" height="38"><defs><style>.fflogo2-1{fill:#eb1000;}.fflogo2-2{fill:#fff;}</style></defs><rect class="fflogo2-1" width="56" height="54" rx="9.91" ry="9.91"></rect><path class="fflogo2-2" d="M21.57,37.57c0,.22-.1.32-.32.32h-4.57c-.18,0-.25-.13-.25-.32V13.94c0-.21.07-.29.28-.29h14.65c.25,0,.31.07.35.31l.41,3.99c.04.22-.07.32-.31.32h-10.24v5.62h9.23c.21,0,.31.07.31.29v4.04c0,.22-.11.29-.29.29h-9.25v9.06Z"></path><path class="fflogo2-2" d="M34.86,19.81c0-.21.1-.31.31-.31h4.55c.24,0,.31.06.31.3v17.74c0,.24-.07.34-.34.34h-4.46c-.25,0-.37-.11-.37-.35v-17.73Z"></path><path class="fflogo2-2" d="M38.56,15.5l2.26.51c.89.2,1.51-.86.89-1.53l-1.57-1.7c-.21-.22-.29-.53-.22-.83l.51-2.26c.2-.89-.87-1.5-1.54-.88l-1.7,1.57c-.22.21-.54.29-.83.22l-2.26-.51c-.89-.2-1.51.86-.89,1.53l1.57,1.7c.21.22.29.53.22.83l-.51,2.26c-.2.89.87,1.5,1.54.88l1.7-1.57c.22-.21.54-.29.83-.22Z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Adobe Firefly</span>
+          <span class="tool-card__desc">Generative image and design tooling for Creative teams.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="creative">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Trint</span>
+          <span class="tool-card__desc">Automated transcription and editing for video and audio content.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="creative">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m23 7-7 5 7 5V7Z"></path><rect width="15" height="14" x="1" y="5" rx="2" ry="2"></rect></svg>
+            </span>
+            <span class="tool-card__badge">Guidelines only</span>
+          </div>
+          <span class="tool-card__name">Descript</span>
+          <span class="tool-card__desc">Script-based video and podcast editing with AI cleanup tools.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="creative">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#F24E1E"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"></path></svg>
+            </span>
+            <span class="tool-card__badge">Request only</span>
+          </div>
+          <span class="tool-card__name">Figma</span>
+          <span class="tool-card__desc">Interface design and prototyping, with shared team libraries.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <!-- Collaboration -->
+        <article class="tool-card" data-category="collaboration">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#050038"><path d="M17.392 0H13.9L17 4.808 10.444 0H6.949l3.102 6.3L3.494 0H0l3.05 8.131L0 24h3.494L10.05 6.985 6.949 24h3.494L17 5.494 13.899 24h3.493L24 3.672 17.392 0z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">Guidelines &middot; Request</span>
+          </div>
+          <span class="tool-card__name">Miro</span>
+          <span class="tool-card__desc">Collaborative whiteboarding for workshops and planning.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="collaboration">
+          <div class="tool-card__top">
+            <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#0B5CFF"><path d="M5.033 14.649H.743a.74.74 0 0 1-.686-.458.74.74 0 0 1 .16-.808L3.19 10.41H1.06A1.06 1.06 0 0 1 0 9.35h3.957c.301 0 .57.18.686.458a.74.74 0 0 1-.161.808L1.51 13.59h2.464c.585 0 1.06.475 1.06 1.06zM24 11.338c0-1.14-.927-2.066-2.066-2.066-.61 0-1.158.265-1.537.686a2.061 2.061 0 0 0-1.536-.686c-1.14 0-2.066.926-2.066 2.066v3.311a1.06 1.06 0 0 0 1.06-1.06v-2.251a1.004 1.004 0 0 1 2.013 0v2.251c0 .586.474 1.06 1.06 1.06v-3.311a1.004 1.004 0 0 1 2.012 0v2.251c0 .586.475 1.06 1.06 1.06zM16.265 12a2.728 2.728 0 1 1-5.457 0 2.728 2.728 0 0 1 5.457 0zm-1.06 0a1.669 1.669 0 1 0-3.338 0 1.669 1.669 0 0 0 3.338 0zm-4.82 0a2.728 2.728 0 1 1-5.458 0 2.728 2.728 0 0 1 5.457 0zm-1.06 0a1.669 1.669 0 1 0-3.338 0 1.669 1.669 0 0 0 3.338 0z"></path></svg>
+            </span>
+            <span class="tool-card__badge">Request only</span>
+          </div>
+          <span class="tool-card__name">Zoom AI</span>
+          <span class="tool-card__desc">Meeting summaries, transcripts and an AI companion inside Zoom.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="index.html#request-access">Request access <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="collaboration">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </span>
+            <span class="tool-card__badge">Guidelines only</span>
+          </div>
+          <span class="tool-card__name">Slack AI</span>
+          <span class="tool-card__desc">Real-time team communication, with AI-assisted summaries and search.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action" href="#">View guidelines <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+        <article class="tool-card" data-category="collaboration">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </span>
+            <span class="tool-card__badge">Site</span>
+          </div>
+          <span class="tool-card__name">Collab Tool Hub</span>
+          <span class="tool-card__desc">Find and connect the collaboration tools your team already uses.</span>
+          <div class="tool-card__actions">
+            <a class="tool-card__action tool-card__action--primary" href="#">Go to site <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="tools-directory__empty" id="toolsEmpty" hidden>No tools in this category yet.</p>
+      </div>
+
+      <!-- ======================= RESTRICTED & UNAPPROVED ======================= -->
+      <div class="tool-panel" id="panel-restricted" role="tabpanel" aria-labelledby="tab-restricted" data-panel="restricted" hidden>
+
+        <div class="restricted-group">
+          <h3 class="restricted-group__title">Not permitted to use</h3>
+          <p class="restricted-banner">
+            Warner Bros. Discovery initiated litigation against <strong>Midjourney</strong> and <strong>MiniMax (Hailuo AI)</strong> in the U.S. in September 2025 for copyright infringement based on their generative AI tools that generate, display, and distribute WBD copyrighted works and characters. CNN initiated litigation against <strong>Perplexity</strong> in May 2026 for copyright infringement based on their copying and distribution of CNN's original content. These lawsuits are ongoing.
+          </p>
+          <div class="tools-grid tools-grid--restricted">
+            <article class="tool-card tool-card--restricted">
+              <div class="tool-card__top">
+                <span class="platform-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not permitted</span>
+              </div>
+              <span class="tool-card__name">Midjourney</span>
+              <span class="tool-card__desc">Operated by Midjourney, Inc.</span>
+            </article>
+            <article class="tool-card tool-card--restricted">
+              <div class="tool-card__top">
+                <span class="platform-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not permitted</span>
+              </div>
+              <span class="tool-card__name">Hailuo AI</span>
+              <span class="tool-card__desc">Operated by MiniMax — Shanghai Xiyu Jizhi Technology Co., Ltd. and Nanonoble Pte. Ltd.</span>
+            </article>
+            <article class="tool-card tool-card--restricted">
+              <div class="tool-card__top">
+                <span class="platform-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not permitted</span>
+              </div>
+              <span class="tool-card__name">Perplexity</span>
+              <span class="tool-card__desc">Operated by Perplexity AI, Inc.</span>
+            </article>
+            <article class="tool-card tool-card--restricted">
+              <div class="tool-card__top">
+                <span class="platform-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not permitted</span>
+              </div>
+              <span class="tool-card__name">MiniMax H3</span>
+              <span class="tool-card__desc">Operated by Shanghai Xiyu Jizhi Technology Co., Ltd. and Nanonoble Pte. Ltd.</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="restricted-group">
+          <h3 class="restricted-group__title">Other unapproved tools</h3>
+          <p class="restricted-group__note">Not yet reviewed by the AI CoE — don't use these for Skydance work without approval. Want one evaluated? <a href="#intake-portal" data-goto-intake="true">Submit it via the Intake Portal</a>.</p>
+          <div class="tools-grid tools-grid--restricted">
+            <article class="tool-card tool-card--unapproved">
+              <div class="tool-card__top">
+                <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="#000000"><path d="m12 1.608 12 20.784H0Z"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not yet approved</span>
+              </div>
+              <span class="tool-card__name">Vercel</span>
+              <span class="tool-card__desc">vercel.ai — application hosting &amp; deployment platform.</span>
+              <div class="tool-card__actions">
+                <a class="tool-card__action" href="#intake-portal" data-goto-intake="true">Request review <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+            </article>
+            <article class="tool-card tool-card--unapproved">
+              <div class="tool-card__top">
+                <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="#5786FE"><path d="M23.748 4.651c-.254-.124-.364.113-.512.233-.051.04-.094.09-.137.137-.372.397-.806.657-1.373.626-.829-.046-1.537.214-2.163.848-.133-.782-.575-1.248-1.247-1.548-.352-.155-.708-.311-.955-.65-.172-.24-.219-.509-.305-.774-.055-.16-.11-.323-.293-.35-.2-.031-.278.136-.356.276-.313.572-.434 1.202-.422 1.84.027 1.436.633 2.58 1.838 3.393.137.094.172.187.129.323-.082.28-.18.553-.266.833-.055.179-.137.218-.328.14a5.5 5.5 0 0 1-1.737-1.179c-.857-.828-1.631-1.743-2.597-2.46a12 12 0 0 0-.689-.47c-.985-.957.13-1.743.387-1.836.27-.098.094-.433-.778-.428-.872.003-1.67.295-2.687.685a3 3 0 0 1-.465.136 9.6 9.6 0 0 0-2.883-.101c-1.885.21-3.39 1.1-4.497 2.622C.082 8.776-.231 10.854.152 13.02c.403 2.284 1.568 4.175 3.36 5.653 1.857 1.533 3.997 2.284 6.438 2.14 1.482-.085 3.132-.284 4.994-1.86.47.234.962.328 1.78.398.629.058 1.235-.031 1.705-.129.735-.155.684-.836.418-.961-2.155-1.004-1.682-.595-2.112-.926 1.095-1.295 2.768-3.598 3.284-6.733.05-.346.115-.834.108-1.114-.004-.171.035-.238.23-.257a4.2 4.2 0 0 0 1.545-.475c1.397-.763 1.96-2.016 2.093-3.517.02-.23-.004-.467-.247-.588M11.58 18.168c-2.088-1.642-3.101-2.183-3.52-2.16-.39.024-.32.472-.234.763.09.288.207.487.371.74.114.167.192.416-.113.603-.673.416-1.842-.14-1.897-.168-1.361-.801-2.5-1.86-3.301-3.306-.775-1.393-1.225-2.888-1.299-4.482-.02-.385.094-.522.477-.592a4.7 4.7 0 0 1 1.53-.038c2.131.311 3.946 1.264 5.467 2.774.868.86 1.525 1.887 2.202 2.89.72 1.066 1.494 2.082 2.48 2.915.348.291.626.513.892.677-.802.09-2.14.109-3.055-.615zm1.001-6.44a.306.306 0 0 1 .415-.287.3.3 0 0 1 .113.074.3.3 0 0 1 .086.214c0 .17-.136.307-.308.307a.303.303 0 0 1-.306-.307m3.11 1.596c-.2.081-.4.151-.591.16a1.25 1.25 0 0 1-.798-.254c-.274-.23-.47-.358-.551-.758a1.7 1.7 0 0 1 .015-.588c.07-.327-.007-.537-.238-.727-.188-.156-.426-.199-.689-.199a.6.6 0 0 1-.254-.078.253.253 0 0 1-.114-.358 1 1 0 0 1 .192-.21c.356-.202.767-.136 1.146.016.352.144.618.408 1.001.782.392.451.462.576.685.915.176.264.336.536.446.848.066.194-.02.353-.25.45"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not yet approved</span>
+              </div>
+              <span class="tool-card__name">DeepSeek</span>
+              <span class="tool-card__desc">deepseek.com &amp; chat.deepseek.com — third-party-hosted model, no enterprise agreement.</span>
+              <div class="tool-card__actions">
+                <a class="tool-card__action" href="#intake-portal" data-goto-intake="true">Request review <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+            </article>
+            <article class="tool-card tool-card--unapproved">
+              <div class="tool-card__top">
+                <span class="platform-card__icon platform-card__icon--logo" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="#FFD21E"><path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not yet approved</span>
+              </div>
+              <span class="tool-card__name">Hugging Face</span>
+              <span class="tool-card__desc">huggingface.co — open-model hosting &amp; hub.</span>
+              <div class="tool-card__actions">
+                <a class="tool-card__action" href="#intake-portal" data-goto-intake="true">Request review <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+            </article>
+            <article class="tool-card tool-card--unapproved">
+              <div class="tool-card__top">
+                <span class="platform-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+                </span>
+                <span class="tool-card__badge">Not yet approved</span>
+              </div>
+              <span class="tool-card__name">OpenClaw</span>
+              <span class="tool-card__desc">openclaw.ai — unreviewed third-party AI agent.</span>
+              <div class="tool-card__actions">
+                <a class="tool-card__action" href="#intake-portal" data-goto-intake="true">Request review <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER (shared) ======================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+        <p>AI Central. Approved tools, guidance and support for building responsibly with AI.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html#about">About</a>
+        <a href="index.html#platforms">Explore</a>
+        <a href="index.html#platforms">Studio</a>
+        <a href="index.html">Learning</a>
+        <a href="index.html">Trust</a>
+        <a href="index.html">Community</a>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Skydance. All rights reserved. This hub is part of the Skydance–WBD integration; employee data is governed by your company's existing workforce privacy notice.</span>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

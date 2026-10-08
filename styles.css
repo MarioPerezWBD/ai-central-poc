@@ -1,0 +1,1138 @@
+/* ==========================================================================
+   SKYDANCE AI CENTRAL — PROTOTYPE STYLES
+   Static HTML/CSS/JS. No build step. Open index.html directly.
+   ========================================================================== */
+
+/* ---- Reset --------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol { margin: 0; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input { font: inherit; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--tracking-body);
+  color: var(--text-body);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+/* ---- Skip link / a11y utilities ------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-4);
+  background: var(--sky-gold-100);
+  color: var(--text-on-gold);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  font-weight: var(--fw-bold);
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: var(--space-4); }
+
+:focus-visible {
+  outline: 2px solid var(--sky-gold-100);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   COSMOS BACKGROUND
+   Fixed, real nebula photography — intentionally visible ONLY through the
+   hero. Every section below it (.about-band, .platforms, .value-band,
+   .site-footer) paints a fully OPAQUE background over this layer, so the
+   galaxy never bleeds past the first screen, plus a flat .hero__scrim for
+   extra contrast on the hero's own text.
+   ========================================================================== */
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+.cosmos::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background-image: url("assets/img/cosmos-purple.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  filter: saturate(115%) brightness(0.85);
+  animation: nebulaDive 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.cosmos::after {
+  content: "";
+  position: absolute;
+  top: -4%;
+  right: -12%;
+  width: 72%;
+  height: 76%;
+  background-image: url("assets/img/cosmos-gold-edge.jpg");
+  background-size: cover;
+  background-position: 60% 45%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  -webkit-mask-image: radial-gradient(60% 60% at 78% 42%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 75%);
+  mask-image: radial-gradient(60% 60% at 78% 42%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 75%);
+  animation: goldDive 18s ease-in-out infinite alternate;
+}
+
+/* "Flying into the cosmos" loop: a single scale ramp, eased in/out and
+   played alternate so it reverses smoothly at each end — no jump-cut reset
+   needed for a seamless loop. Short duration keeps the push-in feeling
+   active rather than a near-static drift. */
+@keyframes nebulaDive {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-3%, -3.5%, 0) scale(1.28); }
+}
+@keyframes goldDive {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
+  100% { transform: translate3d(2.5%, 3%, 0) scale(1.38); opacity: 0.62; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cosmos::before, .cosmos::after { animation: none; }
+}
+
+.cosmos-scrim-top {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--grad-scrim-top);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   BUTTONS — per skydance.com reference: uppercase, sharp corners, no glow.
+   Hover fills the button with a black sweep that animates in from the left
+   (instead of a flat background-color swap, which reads as an instant cut
+   rather than a transition). Text/border color fade in parallel.
+   ========================================================================== */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 13px 26px;
+  border-radius: 0;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-base);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.btn-gold {
+  background: var(--sky-gold-100);
+  border-color: var(--sky-gold-100);
+  color: var(--text-on-gold);
+}
+.btn-gold:hover,
+.btn-gold:focus-visible {
+  color: var(--sky-gold-100);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--sky-gold-100);
+  color: var(--sky-gold-100);
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: var(--border-strong);
+  color: #fff;
+}
+
+.btn-sm { padding: 9px 18px; font-size: var(--fs-micro); }
+
+/* The mobile drawer's close button reuses .btn-ghost for its icon-only
+   circular shape but should stay subtle — no gold border by default. */
+.mobile-nav-close.btn-ghost {
+  border-color: var(--border-hairline);
+  color: var(--sky-gray-blue);
+}
+.mobile-nav-close.btn-ghost:hover {
+  border-color: var(--border-strong);
+  color: #fff;
+}
+
+/* ==========================================================================
+   HEADER / NAV — uppercase dropdown pattern (per skydance.com reference).
+   Dropdown sub-items are placeholders (no pages built yet); the top-level
+   triggers scroll to the matching homepage section where one exists.
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px) saturate(140%);
+  background: rgba(13, 13, 13, 0.55);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: 96px;
+  padding-block: var(--space-3);
+}
+
+/* Vertical business-unit lockup, per the Skydance brand guide: wordmark on
+   top, department/unit name centered directly beneath it in small tracked
+   caps (guide spec: tracking +225 ≈ 0.22em). Replaces the earlier
+   side-by-side "logo | label" horizontal lockup. Logo sized up for presence
+   — the header is allowed to grow taller to accommodate it. */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.brand img { height: 40px; width: auto; }
+.brand__unit {
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sky-gray-blue);
+  white-space: nowrap;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-item { position: relative; }
+
+/* Trigger reads as a single pressable "chip": label + trailing chevron,
+   with a soft dark-gray fill and a full-width gold underline that only
+   appear together on hover/open — exactly the Skydance pattern (see
+   reference screenshots: CAREERS/ABOUT get a filled box + underline,
+   the chevron sits after the label and flips to point up). */
+.nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e9eaf2;
+  position: relative;
+  padding: 12px 14px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav-trigger__chevron { flex-shrink: 0; transition: transform 0.2s ease; }
+.nav-trigger::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--sky-gold-100);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.nav-trigger:hover,
+.nav-item:focus-within .nav-trigger,
+.nav-trigger[aria-expanded="true"] {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.nav-trigger:hover::after,
+.nav-item:focus-within .nav-trigger::after,
+.nav-trigger[aria-expanded="true"]::after { transform: scaleX(1); }
+.nav-trigger:hover .nav-trigger__chevron,
+.nav-item:focus-within .nav-trigger__chevron,
+.nav-trigger[aria-expanded="true"] .nav-trigger__chevron { transform: rotate(180deg); }
+
+/* Full-width flyout — replicates skydance.com's pattern: a single solid
+   panel drops below the ENTIRE header bar (not a per-item floating card).
+   script.js shows only the column for the hovered/focused pillar and
+   shifts --flyout-indent so that column's links line up under the trigger. */
+.nav-flyout {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #060608;
+  border-bottom: 1px solid var(--border-hairline);
+  box-shadow: 0 32px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+  z-index: 90;
+}
+.nav-flyout[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+}
+.nav-flyout__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-5) var(--space-7) 0;
+}
+.nav-flyout__col {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 260px;
+}
+.nav-flyout__col.is-active { display: flex; }
+.nav-flyout__col a {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: var(--fw-regular);
+  color: var(--sky-gray-blue);
+  text-decoration: none;
+  text-decoration-color: var(--sky-gold-100);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  transition: color 0.15s ease;
+}
+.nav-flyout__col a:hover,
+.nav-flyout__col a:focus-visible {
+  color: #fff;
+  text-decoration-line: underline;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-hairline);
+  color: #e9eaf2;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.icon-btn:hover { border-color: var(--border-strong); background: rgba(255,255,255,0.09); }
+
+.nav-toggle {
+  display: none;
+  color: #e9eaf2;
+}
+
+/* ==========================================================================
+   SEARCH — inline reveal, not a modal. Clicking the icon drops down a
+   single input field right there. No suggestions, no results list, no
+   backdrop — there's nothing to search yet, so the UI doesn't pretend
+   otherwise.
+   ========================================================================== */
+.search-inline { position: relative; display: flex; }
+
+.search-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(300px, 88vw);
+  background: #0a0a10;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0s linear 0.16s;
+  z-index: 300;
+}
+.search-popover[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0s linear 0s;
+}
+.search-popover__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  color: var(--sky-gray-blue);
+}
+.search-popover__field input {
+  flex: 1;
+  background: none;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: var(--fs-small);
+}
+.search-popover__field input::placeholder { color: var(--text-muted); }
+
+/* ==========================================================================
+   MOBILE NAV — off-canvas drawer with native <details> accordions (one per
+   pillar). Positioned off-canvas at ALL widths so it never intrudes on the
+   desktop layout; only the trigger button's visibility changes below.
+   ========================================================================== */
+.mobile-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease; z-index: 150;
+}
+.mobile-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
+
+.mobile-nav {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(360px, 88vw);
+  background: #050507;
+  border-left: 1px solid var(--border-hairline);
+  padding: var(--space-6) var(--space-5);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-y: auto;
+}
+.mobile-nav[data-open="true"] {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.25s ease, visibility 0s linear 0s;
+}
+.mobile-nav-close {
+  align-self: flex-end;
+  width: 36px; height: 36px;
+  margin-bottom: var(--space-2);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.mobile-nav > .btn { width: 100%; margin-top: var(--space-2); }
+
+.mobile-accordion {
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: var(--space-2);
+}
+.mobile-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  padding: var(--space-2) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-accordion summary::-webkit-details-marker { display: none; }
+/* Chromium quirk: once a <summary> has its `display` changed (flex, in our
+   case), it silently drops ALL generated (::before/::after) content, even
+   on descendants — confirmed via isolated repro. The +/– has to be a real
+   text node instead; script.js flips it on the native "toggle" event. */
+.mobile-accordion__marker {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: var(--fw-regular);
+  color: var(--sky-gold-100);
+}
+.mobile-accordion a {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--sky-gray-blue);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+}
+.mobile-accordion a:hover { color: #fff; }
+
+/* ==========================================================================
+   HERO (the only section with the cosmos showing through)
+   ========================================================================== */
+.hero {
+  padding-block: var(--space-7) var(--space-6);
+  position: relative;
+  min-height: min(72vh, 620px);
+  display: flex;
+  align-items: center;
+}
+
+/* Flat black scrim layered over the cosmos, just for the hero, so the
+   headline/subcopy hold enough contrast regardless of which part of the
+   nebula photo happens to sit behind them. Sits above .cosmos (z-index -2)
+   and .cosmos-scrim-top (z-index -1) but below the hero's own text. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 4, 8, 0.38);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  max-width: 960px;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--sky-gray-blue);
+  font-weight: var(--fw-medium);
+}
+.eyebrow--accent { color: var(--sky-gold-100); }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  line-height: 1.05;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-headline);
+}
+.hero h1 .accent {
+  background: var(--grad-gold-cta);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__sub {
+  font-size: var(--fs-body-lg);
+  color: var(--sky-gray-blue);
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   SECTION SCAFFOLDING
+   ========================================================================== */
+section { padding-block: var(--space-7); }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-headline);
+}
+.section-head p {
+  color: var(--sky-gray-blue);
+  max-width: 54ch;
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   ABOUT THE AI COE — opaque brand-blue band (replaces the hero's cosmos for
+   every section from here down) + metrics grid, per the AI Central
+   reference design.
+   ========================================================================== */
+.about-band {
+  background: var(--grad-about-band);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.about-band__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+.about-band__copy h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  color: #fff;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.about-band__desc {
+  color: var(--sky-gray-blue);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  max-width: 48ch;
+}
+
+/* KPI typography treatment — per the brand guide's "Typography Usage"
+   reference (big bold figures + thin hairline dividers + small tracked
+   caps labels, NO card backgrounds/boxes). */
+.metric-block__eyebrow {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--sky-gray-blue);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-5);
+}
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: var(--space-6);
+}
+.metric-card {
+  text-align: center;
+  padding-inline: var(--space-3);
+  border-right: 1px solid var(--border-hairline);
+}
+.metric-card:nth-child(3n) { border-right: none; }
+.metric-card__value {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1;
+}
+.metric-card__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sky-gray-blue);
+  line-height: 1.4;
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   PLATFORMS & TOOLS — opaque black. Two tabs sharing one section instead of
+   two stacked grids: "Platforms" (in-house, CTA = Open platform) and
+   "Approved Tools" (external, needs approval, CTA = Request access) —
+   saves scroll and keeps the two very different actions distinct.
+   ========================================================================== */
+.platforms { background: var(--bg-base); }
+
+.anchor-offset { display: block; position: relative; top: -110px; }
+
+.tool-tabs {
+  display: flex;
+  gap: var(--space-6);
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: var(--space-6);
+}
+.tool-tab {
+  padding: var(--space-3) 0 var(--space-4);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sky-gray-blue);
+  position: relative;
+}
+.tool-tab::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--sky-gold-100);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+.tool-tab:hover { color: #fff; }
+.tool-tab.is-active { color: #fff; }
+.tool-tab.is-active::after { transform: scaleX(1); }
+
+.tool-panel { display: none; }
+.tool-panel.is-active { display: block; }
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-hairline);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.platform-card:hover {
+  border-color: rgba(175,150,81,0.4);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+.platform-card__icon {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,0.06);
+  color: var(--sky-gold-100);
+  margin-bottom: var(--space-1);
+}
+/* Real brand marks (Request Access tab) keep their own flat colors instead
+   of the gold currentColor treatment — a plain white chip gives every logo
+   consistent contrast regardless of how dark/light its native mark is. */
+.platform-card__icon--logo {
+  background: #fff;
+  border-radius: 6px;
+}
+/* Adobe Firefly's mark already ships as a self-contained flat app-icon
+   tile (colored rounded square), so it sits directly in the slot with no
+   extra chip behind it. */
+.platform-card__icon--tile {
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.platform-card__icon--tile svg { display: block; }
+.platform-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: #fff;
+}
+.platform-card__desc {
+  font-size: var(--fs-small);
+  color: var(--sky-gray-blue);
+  line-height: 1.5;
+  flex: 1;
+}
+.platform-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sky-gold-100);
+  margin-top: var(--space-2);
+}
+.platform-card__cta svg { transition: transform 0.2s ease; }
+.platform-card:hover .platform-card__cta svg { transform: translateX(3px); }
+
+.tool-panel__footer {
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+/* ==========================================================================
+   PAGE HEADER — compact brand-blue band for internal/utility pages (e.g.
+   Approved AI Tools). Same gradient + border treatment as .about-band, just
+   shorter, with no hero/cosmos beneath it — this is the pattern any future
+   internal sub-page should reuse instead of building a new hero.
+   ========================================================================== */
+.page-header {
+  background: var(--grad-about-band);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: var(--space-7) var(--space-6);
+  text-align: center;
+}
+.page-header .eyebrow { margin-bottom: var(--space-3); }
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  color: #fff;
+  margin-bottom: var(--space-4);
+}
+.page-header p {
+  font-size: var(--fs-body-lg);
+  color: var(--sky-gray-blue);
+  max-width: 640px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   TOOLS DIRECTORY — Approved AI Tools page. Filterable catalogue of every
+   platform and tool cleared for use, each card showing its real access
+   path (view guidelines / request access / already open) instead of a
+   single generic CTA.
+   ========================================================================== */
+.tools-directory { background: var(--bg-base); }
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.filter-pill {
+  padding: 9px 18px;
+  border: 1px solid var(--border-hairline);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sky-gray-blue);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.filter-pill:hover { color: #fff; border-color: var(--border-strong); }
+.filter-pill.is-active {
+  background: var(--sky-gold-100);
+  border-color: var(--sky-gold-100);
+  color: var(--text-on-gold);
+  font-weight: var(--fw-bold);
+}
+.filter-pill__count {
+  margin-left: 2px;
+  opacity: 0.7;
+  font-size: var(--fs-micro);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--surface-1);
+  border: 1px solid var(--border-hairline);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.tool-card:hover {
+  border-color: rgba(175,150,81,0.4);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+/* .tool-card's own `display: flex` otherwise outweighs the UA stylesheet's
+   [hidden] rule (equal specificity, later in source order) — the filter
+   pills set the `hidden` attribute directly, so this has to win explicitly. */
+.tool-card[hidden] { display: none; }
+.tool-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+.tool-card__badge {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sky-gray-blue);
+  border: 1px solid var(--border-hairline);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.tool-card__badge--dual { color: var(--sky-gold-100); border-color: rgba(175,150,81,0.35); }
+.tool-card__badge--platform { color: #fff; border-color: var(--border-strong); }
+.tool-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: #fff;
+}
+.tool-card__desc {
+  font-size: var(--fs-small);
+  color: var(--sky-gray-blue);
+  line-height: 1.5;
+  flex: 1;
+}
+.tool-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+.tool-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sky-gray-blue);
+}
+.tool-card__action--primary { color: var(--sky-gold-100); }
+.tool-card__action svg { transition: transform 0.2s ease; }
+.tool-card__action:hover svg { transform: translateX(3px); }
+.tool-card__action:hover { color: #fff; }
+.tool-card__action--primary:hover { color: var(--sky-gold-100); }
+
+.tools-directory__empty {
+  text-align: center;
+  color: var(--sky-gray-blue);
+  padding-block: var(--space-6);
+}
+
+/* ---- Restricted & Unapproved tab -----------------------------------------
+   Deliberately plainer than the approved grid: no hover-lift, no dual CTAs —
+   these cards are informational (or a one-way "request review" link), never
+   a destination to open. Color alone carries the severity difference:
+   red = actively banned (litigation), amber = simply not yet reviewed. */
+.restricted-group { margin-bottom: var(--space-7); }
+.restricted-group:last-child { margin-bottom: 0; }
+.restricted-group__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--fw-bold);
+  color: #fff;
+  margin-bottom: var(--space-3);
+}
+.restricted-banner {
+  background: rgba(226,85,90,0.08);
+  border-left: 3px solid #e2555a;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--sky-gray-blue);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+.restricted-banner strong { color: #fff; }
+.restricted-group__note {
+  color: var(--sky-gray-blue);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-5);
+}
+.restricted-group__note a { color: var(--sky-gold-100); text-decoration: underline; }
+
+.tools-grid--restricted { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+.tool-card--restricted { border-color: rgba(226,85,90,0.3); background: rgba(40,16,18,0.45); }
+.tool-card--restricted:hover { border-color: rgba(226,85,90,0.55); background: rgba(48,19,21,0.6); transform: none; }
+.tool-card--restricted .tool-card__badge { color: #ff9a9a; border-color: rgba(226,85,90,0.4); }
+.tool-card--restricted .platform-card__icon { color: #ff9a9a; }
+
+.tool-card--unapproved:hover { transform: none; }
+.tool-card--unapproved .tool-card__badge { color: #e8c468; border-color: rgba(232,196,104,0.35); }
+
+/* ==========================================================================
+   CREATING VALUE ACROSS THE BUSINESS — brand-blue band. Reuses the same
+   dividers-not-boxes KPI typography as the About section's metrics, framed
+   as cross-functional outcomes instead of traffic numbers.
+   ========================================================================== */
+.value-band {
+  background: var(--grad-about-band);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.section-head--center { justify-content: center; text-align: center; }
+.section-head--center > div { max-width: 640px; margin-inline: auto; }
+.section-head--center p:not(.eyebrow) { margin-inline: auto; }
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+.value-card {
+  text-align: center;
+  padding-inline: var(--space-3);
+  border-right: 1px solid var(--border-hairline);
+}
+.value-card:last-child { border-right: none; }
+.value-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sky-gold-100);
+  margin-bottom: var(--space-3);
+}
+.value-card__value {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1;
+}
+.value-card__label {
+  font-size: 12.5px;
+  color: var(--sky-gray-blue);
+  line-height: 1.45;
+  margin-top: var(--space-2);
+  max-width: 22ch;
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--border-hairline);
+  padding-block: var(--space-6) var(--space-5);
+  background: var(--bg-base);
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-5);
+}
+.footer-brand { max-width: 36ch; }
+.footer-brand img { height: 20px; margin-bottom: var(--space-3); }
+.footer-brand p { font-size: var(--fs-small); color: var(--sky-gray-blue); line-height: 1.6; }
+.footer-nav {
+  display: flex;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.footer-nav a {
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #e9eaf2;
+}
+.footer-nav a:hover { color: var(--sky-gold-100); }
+
+.footer-legal {
+  border-top: 1px solid var(--border-hairline);
+  padding-top: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+}
+.footer-legal a { color: var(--text-muted); text-decoration: underline; }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .about-band__grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .metric-grid { max-width: 560px; }
+  .value-grid { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-6); }
+  .value-card:nth-child(2n) { border-right: none; }
+  .value-card:nth-child(1), .value-card:nth-child(2) { border-bottom: 1px solid var(--border-hairline); padding-bottom: var(--space-5); }
+}
+
+@media (max-width: 860px) {
+  .main-nav, .header-actions .search-pill { display: none; }
+  /* The header's own "Request access" CTA is redundant with the one inside
+     the mobile drawer — drop it here so logo + search + hamburger have
+     room to breathe at narrow widths. */
+  .header-actions > .btn { display: none; }
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    border: 1px solid var(--border-hairline);
+  }
+  .brand img { height: 30px; }
+  .site-header__bar { min-height: 76px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .metric-card { border-right: 1px solid var(--border-hairline); }
+  .metric-card:nth-child(3n) { border-right: 1px solid var(--border-hairline); }
+  .metric-card:nth-child(2n) { border-right: none; }
+  .platform-grid { grid-template-columns: repeat(2, 1fr); }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .hero__ctas { flex-direction: column; width: 100%; }
+  .hero__ctas .btn { width: 100%; }
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .tool-tabs { gap: var(--space-5); }
+  .platform-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .filter-pills { gap: var(--space-2); }
+  .value-grid { grid-template-columns: 1fr; row-gap: var(--space-5); }
+  .value-card { border-right: none !important; border-bottom: 1px solid var(--border-hairline); padding-bottom: var(--space-4) !important; }
+  .value-card:last-child { border-bottom: none; }
+}
+
+@media (max-width: 420px) {
+  .metric-grid { grid-template-columns: 1fr; row-gap: var(--space-4); }
+  .metric-card { border-right: none; border-bottom: 1px solid var(--border-hairline); padding-bottom: var(--space-4); }
+  .metric-card:last-child { border-bottom: none; }
+}

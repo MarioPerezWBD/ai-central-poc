@@ -1,0 +1,166 @@
+/* ==========================================================================
+   SKYDANCE AI CENTER OF EXCELLENCE — DESIGN TOKENS
+   Extracted from: Skydance Brand Style Guide v2026.2
+   ========================================================================== */
+
+/* ---- Typeface: Gordita (official) ------------------------------------- */
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-Light.woff2") format("woff2"),
+       url("assets/fonts/Gordita-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-LightItalic.woff2") format("woff2"),
+       url("assets/fonts/Gordita-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-Regular.woff2") format("woff2"),
+       url("assets/fonts/Gordita-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-RegularItalic.woff2") format("woff2"),
+       url("assets/fonts/Gordita-RegularItalic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-Medium.woff2") format("woff2"),
+       url("assets/fonts/Gordita-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-MediumItalic.woff2") format("woff2"),
+       url("assets/fonts/Gordita-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-Bold.woff2") format("woff2"),
+       url("assets/fonts/Gordita-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("assets/fonts/Gordita-BoldItalic.woff2") format("woff2"),
+       url("assets/fonts/Gordita-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Typography -------------------------------------------------- */
+  /* Gordita with Poppins/system fallback chain, per brand guide fallback rules */
+  --font-display: "Gordita", "Poppins", -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Gordita", "Poppins", -apple-system, "Segoe UI", sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Tracking per guide: -25 (≈ -0.025em) for display >72pt, 0 for body */
+  --tracking-display: -0.025em;
+  --tracking-body: 0;
+  --tracking-eyebrow: 0.2em; /* business-unit lockup style tracking, uppercase labels */
+
+  --fs-hero: clamp(34px, 4.6vw, 60px);
+  --fs-h1: clamp(32px, 4vw, 54px);
+  --fs-h2: clamp(24px, 2.6vw, 34px);
+  --fs-h3: 20px;
+  --fs-body-lg: 18px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+
+  /* ---- Color — Skydance official palette ---------------------------- */
+  --sky-black: #000000;
+  --sky-navy-900: #12123f;
+  --sky-navy-800: #1e1e54;
+  --sky-navy-700: #343468;
+  --sky-indigo-900: #172955;
+  --sky-indigo-800: #2f3e67;
+  --sky-indigo-700: #465477;
+  --sky-gray-blue: #8c94ab;
+
+  --sky-gold-100: #af9651; /* primary CTA / accent gold */
+  --sky-gold-200: #9e8341;
+  --sky-gold-300: #8c7237;
+  --sky-gold-400: #7c6131;
+  --sky-gold-soft: #d9c592; /* lighter tint for hover states, not in guide but derived */
+
+  /* ---- Surfaces & text (dark-mode usage rule from guide) ------------- */
+  --bg-base: #0d0d0d; /* required base fill under the cosmos scrim */
+  --surface-1: rgba(18, 18, 63, 0.55); /* card surface, navy-900 translucent */
+  --surface-2: rgba(30, 30, 84, 0.65); /* raised surface, navy-800 translucent */
+  --surface-solid: #12123f;
+  --border-hairline: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+
+  --text-headline: #ffffff;
+  --text-subhead: #ffffff;
+  --text-body: var(--sky-gray-blue);
+  --text-muted: #6b7290;
+  --text-on-gold: #12123f;
+
+  /* ---- Status colors (functional, not brand — used for tool badges) -- */
+  --status-available: #4fb477;
+  --status-request: var(--sky-gold-100);
+  --status-vpn: #d98a3d;
+  --status-external: var(--sky-gray-blue);
+
+  /* ---- Radius / spacing / elevation ---------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-gold-glow: 0 0 0 1px rgba(175, 150, 81, 0.4), 0 8px 24px rgba(175, 150, 81, 0.25);
+
+  --max-width: 1320px;
+
+  /* ---- Gradients (origin rules per guide: corners 60/-60/120/-120 or bottom -90, fade to black) */
+  --grad-cosmos-corner: radial-gradient(120% 120% at 15% 10%, rgba(47, 62, 103, 0.9) 0%, rgba(13, 13, 13, 0) 55%),
+                        radial-gradient(120% 120% at 85% 15%, rgba(175, 150, 81, 0.35) 0%, rgba(13, 13, 13, 0) 50%);
+  --grad-scrim-top: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+  --grad-gold-cta: linear-gradient(135deg, #d9c592 0%, var(--sky-gold-100) 55%, var(--sky-gold-300) 100%);
+
+  /* Opaque brand-blue band — used for sections below the hero so the cosmos
+     photography only ever shows through the hero itself (fully solid, no
+     alpha, so it reliably occludes the fixed cosmos layer behind it). */
+  --grad-about-band: radial-gradient(130% 160% at 12% -10%, #22306b 0%, rgba(23,41,85,0) 55%),
+                      radial-gradient(120% 140% at 100% 0%, #2f3e67 0%, rgba(23,41,85,0) 45%),
+                      linear-gradient(180deg, #12123f 0%, #0d0d0d 100%);
+}
