@@ -248,59 +248,15 @@
         <button class="tool-tab" type="button" role="tab" id="tab-external" aria-selected="false" aria-controls="panel-external" tabindex="-1" data-tab="external">Approved Tools</button>
       </div>
 
-      <!-- In-house platforms. CTA reads "Open platform" — these are already
-           owned/governed, not a third-party access request. -->
+      <!-- In-house platforms, as a horizontal "side-tab" accordion (one
+           panel open at a time, closed panels collapse to a narrow vertical
+           tab) — modeled on the Skydance Integration Hub's "What We're
+           Building" component. CTA reads "Open platform" — these are
+           already owned/governed, not a third-party access request. The
+           panels themselves are rendered from PLATFORM_ITEMS in script.js;
+           this div is just the mount point. -->
       <div class="tool-panel is-active" id="panel-internal" role="tabpanel" aria-labelledby="tab-internal" data-panel="internal">
-        <div class="platform-grid">
-          <a class="platform-card" href="https://techintake.wbd.com/" target="_blank" rel="noopener">
-            <span class="platform-card__cover" style="background-image:url('assets/platforms/intake-portal.jpg')" aria-hidden="true"></span>
-            <span class="platform-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path></svg>
-            </span>
-            <span class="platform-card__name">Intake Portal</span>
-            <span class="platform-card__desc">Submit and track new AI tool and project requests.</span>
-            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
-          </a>
-          <a class="platform-card" href="https://aisandbox.wbd.com/" target="_blank" rel="noopener">
-            <span class="platform-card__cover" style="background-image:url('assets/platforms/sandbox.jpg')" aria-hidden="true"></span>
-            <span class="platform-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
-            </span>
-            <span class="platform-card__name">Sandbox</span>
-            <span class="platform-card__desc">A safe space to draft and test ideas before going live.</span>
-            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
-          </a>
-          <a class="platform-card" href="https://dex.wbd.com/" target="_blank" rel="noopener">
-            <span class="platform-card__cover" style="background-image:url('assets/platforms/dex.jpg')" aria-hidden="true"></span>
-            <span class="platform-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
-            </span>
-            <span class="platform-card__name">DEX</span>
-            <span class="platform-card__desc">Data &amp; experimentation hub for evaluating models.</span>
-            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
-          </a>
-          <a class="platform-card" href="http://creative-studio.wbd.com/" target="_blank" rel="noopener">
-            <span class="platform-card__cover" style="background-image:url('assets/platforms/creative-studio.jpg')" aria-hidden="true"></span>
-            <span class="platform-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
-            </span>
-            <span class="platform-card__name">Creative Studio</span>
-            <span class="platform-card__desc">Generative design and content creation workspace.</span>
-            <span class="platform-card__cta">Open platform <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
-          </a>
-          <!-- Not an in-house platform — an external directory site — so its
-               CTA reads "Go to site" instead of "Open platform" like its
-               siblings in this grid. -->
-          <a class="platform-card" href="https://warnermedia.sharepoint.com/sites/CollabToolsHub" target="_blank" rel="noopener">
-            <span class="platform-card__cover" style="background-image:url('assets/platforms/collab-tool-hub.jpg')" aria-hidden="true"></span>
-            <span class="platform-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </span>
-            <span class="platform-card__name">Collab Tool Hub</span>
-            <span class="platform-card__desc">Find and connect the collaboration tools your team already uses.</span>
-            <span class="platform-card__cta">Go to site <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
-          </a>
-        </div>
+        <div class="platform-accordion" id="platformAccordion" aria-label="In-house AI platforms"></div>
       </div>
 
       <!-- External, third-party AI tools. CTA reads "Request access" since

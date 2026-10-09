@@ -306,6 +306,145 @@
     goToSlide(0);
   }
 
+  /* ---- Platforms side-tab accordion -------------------------------------
+     Replaces the old static card grid in the "Platforms" panel with a
+     horizontal accordion modeled on the Skydance Integration Hub's "What
+     We're Building" component: one panel open at a time, closed panels
+     collapse to a narrow vertical tab with a rotated label, and the open
+     panel is a full-bleed photo with bottom-left content + Prev/Next nav.
+     Content lives in one data array below and is rendered into the empty
+     #platformAccordion mount point — see the matching CSS block in
+     styles.css for how each piece of this markup is styled. */
+  var PLATFORM_ITEMS = [
+    {
+      name: "Intake Portal",
+      desc: "Submit and track new AI tool and project requests.",
+      image: "assets/platforms/intake-portal.jpg",
+      href: "https://techintake.wbd.com/",
+      cta: "Open platform",
+      icon: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path>'
+    },
+    {
+      name: "Sandbox",
+      desc: "A safe space to draft and test ideas before going live.",
+      image: "assets/platforms/sandbox.jpg",
+      href: "https://aisandbox.wbd.com/",
+      cta: "Open platform",
+      icon: '<path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>'
+    },
+    {
+      name: "DEX",
+      desc: "Data &amp; experimentation hub for evaluating models.",
+      image: "assets/platforms/dex.jpg",
+      href: "https://dex.wbd.com/",
+      cta: "Open platform",
+      icon: '<path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path>'
+    },
+    {
+      name: "Creative Studio",
+      desc: "Generative design and content creation workspace.",
+      image: "assets/platforms/creative-studio.jpg",
+      href: "http://creative-studio.wbd.com/",
+      cta: "Open platform",
+      icon: '<circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>'
+    },
+    {
+      // Not an in-house platform — an external directory site — so its CTA
+      // reads "Go to site" instead of "Open platform" like its siblings.
+      name: "Collab Tool Hub",
+      desc: "Find and connect the collaboration tools your team already uses.",
+      image: "assets/platforms/collab-tool-hub.jpg",
+      href: "https://warnermedia.sharepoint.com/sites/CollabToolsHub",
+      cta: "Go to site",
+      icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>'
+    }
+  ];
+
+  var platformAccordion = document.getElementById("platformAccordion");
+  if (platformAccordion) {
+    var platformActiveIndex = 0;
+    var platformArrowIcon = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>';
+    var platformPrevIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>';
+    var platformNextIcon = platformArrowIcon.replace('width="14" height="14"', 'width="18" height="18"');
+
+    platformAccordion.innerHTML = PLATFORM_ITEMS.map(function (item, i) {
+      return (
+        '<div class="platform-accordion__item" role="button" tabindex="0" aria-expanded="' + (i === 0 ? "true" : "false") + '" aria-label="' + item.name + '" data-index="' + i + '" style="background-image:url(\'' + item.image + '\')">' +
+          '<span class="platform-accordion__scrim" aria-hidden="true"></span>' +
+          // Second, additional dark fill — stacked on top of the scrim
+          // above, visible only while active, concentrated behind the
+          // headline/description instead of tinting the whole photo.
+          '<span class="platform-accordion__content-fill" aria-hidden="true"></span>' +
+          // Mouse-only "click the photo to open the platform" shortcut —
+          // only clickable while this panel is active (see CSS). Hidden
+          // from keyboard/AT; the real CTA button below is what Tab reaches.
+          '<a class="platform-accordion__hit" href="' + item.href + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>' +
+          '<span class="platform-accordion__label">' + item.name + '</span>' +
+          '<div class="platform-accordion__content">' +
+            '<h3 class="platform-accordion__title">' + item.name + '</h3>' +
+            '<p class="platform-accordion__desc">' + item.desc + '</p>' +
+            '<a class="btn btn-ghost btn-sm platform-accordion__cta" href="' + item.href + '" target="_blank" rel="noopener">' + item.cta + '</a>' +
+            '<div class="platform-accordion__nav">' +
+              '<button type="button" class="platform-accordion__nav-btn" data-dir="prev" aria-label="Previous platform">' + platformPrevIcon + '</button>' +
+              '<button type="button" class="platform-accordion__nav-btn" data-dir="next" aria-label="Next platform">' + platformNextIcon + '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join("");
+
+    var platformItems = platformAccordion.querySelectorAll(".platform-accordion__item");
+    var platformIsDesktop = window.matchMedia("(min-width: 861px)");
+
+    function layoutPlatformAccordion() {
+      if (!platformIsDesktop.matches) {
+        platformItems.forEach(function (el) { el.style.width = ""; });
+        return;
+      }
+      var collapsedWidth = 92;
+      var total = platformAccordion.clientWidth;
+      var activeWidth = Math.max(total - (platformItems.length - 1) * collapsedWidth, collapsedWidth);
+      platformItems.forEach(function (el, i) {
+        el.style.width = (i === platformActiveIndex ? activeWidth : collapsedWidth) + "px";
+      });
+    }
+
+    function setPlatformActive(index) {
+      platformActiveIndex = (index + platformItems.length) % platformItems.length;
+      platformItems.forEach(function (el, i) {
+        var isActive = i === platformActiveIndex;
+        el.classList.toggle("is-active", isActive);
+        el.setAttribute("aria-expanded", isActive ? "true" : "false");
+        el.querySelectorAll('[data-dir="prev"]').forEach(function (btn) { btn.disabled = platformActiveIndex === 0; });
+        el.querySelectorAll('[data-dir="next"]').forEach(function (btn) { btn.disabled = platformActiveIndex === platformItems.length - 1; });
+      });
+      layoutPlatformAccordion();
+    }
+
+    platformItems.forEach(function (el, i) {
+      el.addEventListener("click", function () { setPlatformActive(i); });
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setPlatformActive(i);
+        }
+      });
+      // The CTA link and Prev/Next buttons live inside the (clickable) item
+      // itself — stop their clicks from bubbling up and re-triggering the
+      // item's own "activate" handler.
+      el.querySelectorAll(".platform-accordion__cta, .platform-accordion__nav-btn").forEach(function (child) {
+        child.addEventListener("click", function (e) { e.stopPropagation(); });
+      });
+      var prevBtn = el.querySelector('[data-dir="prev"]');
+      var nextBtn = el.querySelector('[data-dir="next"]');
+      if (prevBtn) prevBtn.addEventListener("click", function () { setPlatformActive(platformActiveIndex - 1); });
+      if (nextBtn) nextBtn.addEventListener("click", function () { setPlatformActive(platformActiveIndex + 1); });
+    });
+
+    window.addEventListener("resize", layoutPlatformAccordion);
+    setPlatformActive(0);
+  }
+
   // "Request review" links in the Restricted & Unapproved tab point back at
   // the Intake Portal card on the Approved tab — jump there directly
   // instead of just dropping the visitor on a dead "#intake-portal" anchor

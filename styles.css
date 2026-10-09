@@ -814,6 +814,295 @@ section { padding-block: var(--space-7); }
 .platform-card__cta svg { transition: transform 0.2s ease; }
 .platform-card:hover .platform-card__cta svg { transform: translateX(3px); }
 
+/* ==========================================================================
+   PLATFORM ACCORDION — horizontal "side-tab" accordion for the Platforms
+   panel, modeled on the Skydance Integration Hub's "What We're Building"
+   component. One panel open at a time; closed panels collapse to a narrow
+   vertical tab with a rotated label; the open panel is a full-bleed photo
+   with a bottom-left content block. Panels are rendered from the
+   PLATFORM_ITEMS array in script.js (renderPlatformAccordion()) — this
+   stylesheet only styles whatever markup that function produces.
+   ========================================================================== */
+.platform-accordion {
+  display: flex;
+  align-items: stretch;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: #0a0a0a;
+}
+
+.platform-accordion__item {
+  position: relative;
+  flex: 0 0 92px;
+  min-width: 92px;
+  overflow: hidden;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #111214;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: flex-basis 0.55s cubic-bezier(0.4, 0, 0.2, 1), width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* A genuinely visible white seam between tabs, not the near-invisible
+   12%-opacity hairline used elsewhere on the site — matches the reference,
+   where each closed tab is clearly separated by a bright white rule. */
+.platform-accordion__item + .platform-accordion__item {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+/* The big invisible link behind everything else in the panel — it's what
+   makes "click the photo" open the platform. tabindex="-1" + aria-hidden in
+   the markup keep it out of the keyboard/AT path entirely (it's a mouse-only
+   shortcut; keyboard users reach the real, labeled CTA button below via
+   Tab). Only live when its panel is the active one — on a closed tab this
+   would otherwise silently compete with the "click to expand" behavior. */
+.platform-accordion__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.platform-accordion__item.is-active .platform-accordion__hit {
+  pointer-events: auto;
+}
+.platform-accordion__item:focus-visible {
+  outline: 2px solid var(--sky-gold-100);
+  outline-offset: -2px;
+}
+.platform-accordion__item.is-active {
+  flex: 1 1 auto;
+  cursor: default;
+}
+/* A constant, flat dark tint sitting directly on every item's photo — under
+   the state-specific scrim/gradient layers below — so every image starts a
+   little darker/moodier across the board, independent of which state
+   (default/hover/active) adds its own treatment on top. Improves text
+   legibility everywhere now that these are real photos instead of app
+   screenshots (which were already mostly flat UI color). */
+.platform-accordion__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+
+/* Scrim — matches the reference's three distinct states:
+   - Default (closed, not hovered): solid flat black. The background photo
+     is fully hidden; a closed tab is just a labeled black rectangle.
+   - Hover (closed, not active): solid flat gold — a flat color swap, not a
+     tint over the photo.
+   - Active: the ONLY state where the photo is actually visible, through a
+     bottom-weighted dark gradient for text legibility over it. */
+.platform-accordion__scrim {
+  position: absolute;
+  inset: 0;
+  background: #0a0a0a;
+  transition: background 0.35s ease;
+}
+.platform-accordion__item:hover:not(.is-active) .platform-accordion__scrim {
+  background: var(--sky-gold-100);
+}
+/* A light, even dim over the whole photo — enough to keep the open panel
+   feeling consistent with the rest of the dark UI, but NOT the thing doing
+   the heavy lifting for text legibility (the reference keeps most of the
+   photo fully bright; see e.g. "Global reach", where the soccer player on
+   the right has no dimming at all). */
+.platform-accordion__item.is-active .platform-accordion__scrim {
+  background: linear-gradient(0deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0) 100%);
+}
+
+/* The actual legibility mechanism: a second, ADDITIONAL fill stacked on top
+   of the scrim above, concentrated only where the heading/description sit
+   (bottom-left) and fading out into the untouched photo — this is what the
+   reference uses behind each headline, distinct from the whole-item scrim. */
+.platform-accordion__content-fill {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 85% at 0% 100%, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 42%, rgba(0,0,0,0) 72%);
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+  pointer-events: none;
+}
+.platform-accordion__item.is-active .platform-accordion__content-fill {
+  opacity: 1;
+}
+
+.platform-accordion__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  writing-mode: vertical-rl;
+  /* No rotate() here — plain vertical-rl already reads top-to-bottom
+     ("downward"), matching the reference. A rotate(180deg) would flip it
+     to read bottom-to-top instead. */
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  white-space: nowrap;
+  transition: left 0.5s ease, right 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.platform-accordion__item.is-active .platform-accordion__label {
+  left: auto;
+  right: 28px;
+  transform: translateY(-50%);
+}
+/* The active panel's own label had nothing behind it but the raw photo —
+   unlike every closed tab, which sits on a solid black chip. This recreates
+   that same backing as a strip the width of a collapsed tab, so the active
+   label stays legible and the tab bar reads as visually continuous across
+   active/inactive items — but as a translucent tint (not flat opaque), so
+   a hint of the photo still shows through, matching the reference. */
+.platform-accordion__item.is-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 92px;
+  background: rgba(10, 10, 10, 0.78);
+  pointer-events: none;
+}
+
+/* The whole active panel is itself a link to the platform (see
+   .platform-accordion__hit below) — this content block sits on top of that
+   link but stays pointer-events:none throughout (inherited by its text
+   children too), so clicking the headline/description/empty padding falls
+   through to the link behind it instead of swallowing the click. Only the
+   two genuinely distinct actions — the CTA button and the Prev/Next
+   controls — opt back in with their own pointer-events:auto below. */
+.platform-accordion__content {
+  position: absolute;
+  left: 0;
+  right: 110px;
+  bottom: 0;
+  padding: var(--space-7) var(--space-6);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  pointer-events: none;
+}
+.platform-accordion__item.is-active .platform-accordion__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.platform-accordion__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: var(--fw-bold);
+  color: #fff;
+  margin-bottom: var(--space-2);
+}
+.platform-accordion__desc {
+  font-size: var(--fs-body);
+  color: #d6d8e2;
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+/* A proper outlined button — same component as the rest of the site's
+   .btn-ghost CTAs — instead of the small inline arrow-link the card grid
+   used. Sits on its own row above Prev/Next (not beside them), as its own
+   clearly primary action; re-opts into pointer-events since its container
+   is pointer-events:none (see .platform-accordion__content above). */
+.platform-accordion__cta {
+  display: inline-flex;
+  margin-bottom: var(--space-5);
+  pointer-events: auto;
+}
+.platform-accordion__nav {
+  display: flex;
+  gap: var(--space-3);
+}
+.platform-accordion__nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--sky-gold-100);
+  background: transparent;
+  color: var(--sky-gold-100);
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+}
+.platform-accordion__nav-btn:hover:not(:disabled) {
+  background: var(--sky-gold-100);
+  color: var(--text-on-gold);
+}
+.platform-accordion__nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--border-hairline);
+  color: var(--sky-gray-blue);
+}
+
+/* Tablet / mobile — convert to a vertical accordion: full-width rows that
+   grow in height instead of width, labels read horizontally instead of
+   rotated. Same markup, same JS; only the layout math (height vs. width,
+   handled in script.js' layoutPlatformAccordion()) and these rules change. */
+@media (max-width: 860px) {
+  .platform-accordion {
+    flex-direction: column;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+  .platform-accordion__item {
+    flex: 0 0 auto;
+    width: 100% !important;
+    height: 64px;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .platform-accordion__item + .platform-accordion__item {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .platform-accordion__item.is-active {
+    height: 520px;
+  }
+  .platform-accordion__label {
+    writing-mode: horizontal-tb;
+    top: 50%;
+    left: var(--space-5);
+    transform: translateY(-50%);
+    font-size: 14px;
+  }
+  .platform-accordion__item.is-active .platform-accordion__label {
+    top: var(--space-5);
+    left: var(--space-5);
+    right: auto;
+    transform: none;
+  }
+  /* Mobile equivalent of the desktop right-edge backing strip — the label
+     moves to the top-left here, so its solid-black backdrop moves with it
+     instead of spanning the right edge. */
+  .platform-accordion__item.is-active::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: auto;
+    height: 64px;
+  }
+  .platform-accordion__content {
+    right: var(--space-5);
+    left: var(--space-5);
+    padding: 0 0 var(--space-5);
+  }
+}
+
 .tool-panel__footer {
   text-align: center;
   margin-top: var(--space-6);
@@ -1281,14 +1570,29 @@ section { padding-block: var(--space-7); }
   .main-nav, .header-actions .search-inline { display: none; }
   .nav-toggle {
     display: inline-flex;
-    margin-left: auto;
+    flex-shrink: 0;
     width: 40px; height: 40px;
     align-items: center; justify-content: center;
     border: 1px solid var(--border-hairline);
   }
   .brand img { height: 24px; }
   .brand__unit { font-size: 10px; }
-  .site-header__bar { min-height: 76px; }
+  /* Below the desktop breakpoint the center nav column is empty (hidden),
+     so the rigid 3-column 1fr/auto/1fr grid has no reason to force the
+     logo and the menu button into a strict 50/50 split — on some
+     browsers/fonts that forced split let the logo's text collide with the
+     toggle button. A simple two-item flex row sizes each side to its own
+     content and keeps them pinned to opposite edges, so they can never
+     overlap regardless of how wide "AI CENTRAL" renders. */
+  .site-header__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 76px;
+  }
+  .brand { min-width: 0; }
+  .header-actions { flex-shrink: 0; }
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
   .metric-card { border-right: 1px solid var(--border-hairline); }
   .metric-card:nth-child(3n) { border-right: 1px solid var(--border-hairline); }
