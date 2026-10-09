@@ -317,7 +317,7 @@
      styles.css for how each piece of this markup is styled. */
   var PLATFORM_ITEMS = [
     {
-      name: "Intake Portal",
+      name: "One Tech Intake Portal",
       desc: "Submit and track new AI tool and project requests.",
       image: "assets/platforms/intake-portal.jpg",
       href: "https://techintake.wbd.com/",
@@ -325,7 +325,7 @@
       icon: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path>'
     },
     {
-      name: "Sandbox",
+      name: "AI Sandbox",
       desc: "A safe space to draft and test ideas before going live.",
       image: "assets/platforms/sandbox.jpg",
       href: "https://aisandbox.wbd.com/",
@@ -333,7 +333,7 @@
       icon: '<path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>'
     },
     {
-      name: "DEX",
+      name: "AI DEX",
       desc: "Data &amp; experimentation hub for evaluating models.",
       image: "assets/platforms/dex.jpg",
       href: "https://dex.wbd.com/",
@@ -341,7 +341,7 @@
       icon: '<path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path>'
     },
     {
-      name: "Creative Studio",
+      name: "AI Creative Studio",
       desc: "Generative design and content creation workspace.",
       image: "assets/platforms/creative-studio.jpg",
       href: "http://creative-studio.wbd.com/",
