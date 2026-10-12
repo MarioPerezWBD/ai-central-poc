@@ -322,6 +322,10 @@
       image: "assets/platforms/intake-portal.jpg",
       href: "https://techintake.wbd.com/",
       cta: "Open platform",
+      // Secondary, lower-emphasis link to the platform's SharePoint landing
+      // page — useful context/orientation before jumping into the tool
+      // itself, so it stays visually subordinate to the primary CTA above.
+      learnMoreHref: "https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_One-Tech-Intake-Portal.aspx",
       icon: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M9 12h6"></path><path d="M9 16h6"></path>'
     },
     {
@@ -330,6 +334,7 @@
       image: "assets/platforms/sandbox.jpg",
       href: "https://aisandbox.wbd.com/",
       cta: "Open platform",
+      learnMoreHref: "https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Sandbox.aspx",
       icon: '<path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>'
     },
     {
@@ -338,6 +343,7 @@
       image: "assets/platforms/dex.jpg",
       href: "https://dex.wbd.com/",
       cta: "Open platform",
+      learnMoreHref: "https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Dex.aspx",
       icon: '<path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path>'
     },
     {
@@ -346,11 +352,15 @@
       image: "assets/platforms/creative-studio.jpg",
       href: "http://creative-studio.wbd.com/",
       cta: "Open platform",
+      learnMoreHref: "https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Creative-Studio.aspx",
       icon: '<circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>'
     },
     {
       // Not an in-house platform — an external directory site — so its CTA
       // reads "Go to site" instead of "Open platform" like its siblings.
+      // Also has no learnMoreHref: there's no separate SharePoint landing
+      // page for this one (the href above already IS the SharePoint site),
+      // so no secondary CTA is rendered for this item.
       name: "Collab Tool Hub",
       desc: "Find and connect the collaboration tools your team already uses.",
       image: "assets/platforms/collab-tool-hub.jpg",
@@ -383,7 +393,17 @@
           '<div class="platform-accordion__content">' +
             '<h3 class="platform-accordion__title">' + item.name + '</h3>' +
             '<p class="platform-accordion__desc">' + item.desc + '</p>' +
-            '<a class="btn btn-ghost btn-sm platform-accordion__cta" href="' + item.href + '" target="_blank" rel="noopener">' + item.cta + '</a>' +
+            '<div class="platform-accordion__actions">' +
+              '<a class="btn btn-ghost btn-sm platform-accordion__cta" href="' + item.href + '" target="_blank" rel="noopener">' + item.cta + '</a>' +
+              // Secondary, lower-emphasis action — only rendered when this
+              // platform has its own SharePoint landing page to point to.
+              // Uses an "external link" glyph (not the primary CTA's plain
+              // arrow) to signal it opens a different kind of destination.
+              (item.learnMoreHref ?
+                '<a class="platform-accordion__learn-more" href="' + item.learnMoreHref + '" target="_blank" rel="noopener">Learn more on SharePoint' +
+                  '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>' +
+                '</a>' : '') +
+            '</div>' +
             '<div class="platform-accordion__nav">' +
               '<button type="button" class="platform-accordion__nav-btn" data-dir="prev" aria-label="Previous platform">' + platformPrevIcon + '</button>' +
               '<button type="button" class="platform-accordion__nav-btn" data-dir="next" aria-label="Next platform">' + platformNextIcon + '</button>' +
