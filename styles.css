@@ -348,9 +348,14 @@ body {
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
 }
+/* No max-width/margin-auto centering here (unlike the old .container
+   pattern) — script.js lines up the visible column under its trigger by
+   measuring the trigger's offset from .site-header__bar's left edge and
+   applying that as this element's padding-left. That only works if this
+   element's own left edge sits at the SAME x position as the bar's (both
+   flush to the viewport edge); a centered, width-capped box here would add
+   its own inset on top of the JS offset and throw the alignment off. */
 .nav-flyout__inner {
-  max-width: var(--max-width);
-  margin-inline: auto;
   padding: var(--space-6) var(--space-5) var(--space-7) 0;
 }
 .nav-flyout__col {
