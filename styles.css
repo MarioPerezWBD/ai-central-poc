@@ -229,14 +229,14 @@ body {
   border-bottom: 1px solid var(--border-hairline);
 }
 
-/* Brand flush left, actions flush right (two-item flex, space-between),
-   and the nav absolutely centered on the FULL bar width independent of
-   how wide the brand lockup or actions cluster are. A 1fr/auto/1fr grid
-   looks correct on paper but only centers the nav within the leftover
-   space after the two flanking tracks — which visually reads as
-   left-biased since the brand track rarely needs its whole fr share.
-   Taking the nav out of flow (position:absolute, left:50%) centers it
-   against the bar itself instead. */
+/* Deliberately NOT `.container` (which caps out at --max-width and would
+   visually strand the logo/search in the middle of the screen on wide
+   monitors, with the whole lockup+nav+search cluster reading as one
+   centered block). The header bar instead spans the full viewport edge to
+   edge — brand flush to the true left edge, actions flush to the true
+   right edge, own padding-inline for breathing room instead of inheriting
+   .container's. The nav is absolutely centered on this FULL bar width,
+   independent of how wide the brand lockup or actions cluster are. */
 .site-header__bar {
   position: relative;
   display: flex;
@@ -245,6 +245,7 @@ body {
   gap: var(--space-6);
   min-height: 96px;
   padding-block: var(--space-3);
+  padding-inline: var(--space-6);
 }
 
 /* Horizontal business-unit lockup, per the Skydance brand guide's
@@ -957,7 +958,16 @@ section { padding-block: var(--space-7); }
   color: #fff;
   white-space: nowrap;
   transition: left 0.5s ease, right 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
+  /* Must be pointer-events:auto (not none): on the ACTIVE item this label
+     sits visually on top of .platform-accordion__hit — the full-panel link
+     that opens the platform — which also has z-index:0 and covers this
+     same spot. With pointer-events:none here, a click on the (already
+     expanded) heading fell straight through to that link and navigated
+     away instead of just re-triggering "expand this item" (a harmless
+     no-op). Catching the click on the label itself keeps clicking any
+     heading — expanded or not — strictly an accordion action; it still
+     bubbles up to the item's own click handler like everything else here. */
+  pointer-events: auto;
   z-index: 1;
 }
 .platform-accordion__item.is-active .platform-accordion__label {
@@ -1613,19 +1623,16 @@ section { padding-block: var(--space-7); }
   }
   .brand img { height: 24px; }
   .brand__unit { font-size: 10px; }
-  /* Below the desktop breakpoint the center nav column is empty (hidden),
-     so the rigid 3-column 1fr/auto/1fr grid has no reason to force the
-     logo and the menu button into a strict 50/50 split — on some
-     browsers/fonts that forced split let the logo's text collide with the
-     toggle button. A simple two-item flex row sizes each side to its own
-     content and keeps them pinned to opposite edges, so they can never
-     overlap regardless of how wide "AI CENTRAL" renders. */
+  /* Below the desktop breakpoint the nav is hidden entirely, leaving just
+     the logo and the menu toggle — a slightly tighter side padding than
+     desktop's, since there's less room to spare. */
   .site-header__bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-3);
     min-height: 76px;
+    padding-inline: var(--space-5);
   }
   .brand { min-width: 0; }
   .header-actions { flex-shrink: 0; }

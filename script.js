@@ -400,7 +400,7 @@
               // Uses an "external link" glyph (not the primary CTA's plain
               // arrow) to signal it opens a different kind of destination.
               (item.learnMoreHref ?
-                '<a class="platform-accordion__learn-more" href="' + item.learnMoreHref + '" target="_blank" rel="noopener">Learn more on SharePoint' +
+                '<a class="platform-accordion__learn-more" href="' + item.learnMoreHref + '" target="_blank" rel="noopener" aria-label="Learn more about ' + item.name + ' on SharePoint">Learn more' +
                   '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>' +
                 '</a>' : '') +
             '</div>' +
