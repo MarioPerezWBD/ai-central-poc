@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Skydance AI Central</title>
+<meta name="description" content="The purpose, vision, mission and initiatives behind Skydance's AI Center of Excellence." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+<link rel="shortcut icon" href="assets/favicon/favicon-32x32.png" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Cosmos background (fixed, behind everything). On this page it's only
+     visible through the compact page-header band at the top; every section
+     below has its own opaque surface, same rule as the other pages. -->
+<div class="cosmos" aria-hidden="true"></div>
+<div class="cosmos-scrim-top" aria-hidden="true"></div>
+
+<!-- ======================= HEADER (shared across pages) ======================= -->
+<header class="site-header">
+  <div class="site-header__bar">
+    <a class="brand" href="index.html" aria-label="Skydance AI Central — Home">
+      <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+      <span class="brand__unit">AI Central</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <div class="nav-item" data-panel="about">
+        <a class="nav-trigger" href="about.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout" aria-current="page">About<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="explore">
+        <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Explore<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="studio">
+        <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Studio<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="developers">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Developers<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="learning">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Learning<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="trust">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Trust<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="community">
+        <a class="nav-trigger" href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Community_Landing.aspx" target="_blank" rel="noopener" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Community<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-inline" id="searchInline">
+        <button class="icon-btn" id="searchTrigger" aria-label="Search AI Central" aria-expanded="false" aria-controls="searchPopover">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        </button>
+        <div class="search-popover" id="searchPopover" aria-hidden="true">
+          <div class="search-popover__field">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input type="text" id="searchInput" placeholder="Search AI Central…" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="17" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-flyout" id="navFlyout" aria-hidden="true">
+    <div class="nav-flyout__inner">
+      <div class="nav-flyout__col" data-panel="about">
+        <a href="about.html#purpose">Our Purpose</a>
+        <a href="about.html#vision-mission">Vision &amp; Mission</a>
+        <a href="about.html#initiatives">Initiatives</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="explore">
+        <a href="approved-tools.html">Platforms &amp; Tools</a>
+        <a href="https://warnermedia.sharepoint.com/sites/CollabToolsHub/SitePages/AI%20Tools%20-%20Connectors%20Offering.aspx" target="_blank" rel="noopener">Connectors &amp; Integrations</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Tool Guidance</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="studio">
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_One-Tech-Intake-Portal.aspx" target="_blank" rel="noopener">Intake Portal</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Sandbox.aspx" target="_blank" rel="noopener">Sandbox</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Dex.aspx" target="_blank" rel="noopener">DEX</a>
+        <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/AI-Creative-Studio-Hub.aspx?csf=1&amp;web=1&amp;e=E3SuNr&amp;CID=ca6a32ae-9356-4eb2-bfb8-98ca24018188" target="_blank" rel="noopener">Creative Studio</a>
+        <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/ITHelpdeskHome.aspx" target="_blank" rel="noopener">Content Lab</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="developers">
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Engineering-Standards.aspx" target="_blank" rel="noopener">Engineering Standards</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="learning">
+        <a href="https://warnermedia.sharepoint.com/sites/mycareeratwbd/SitePages/LearnAI.aspx" target="_blank" rel="noopener">LearnAI@WBD</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Training &amp; Resources</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/AI-Roadshows.aspx" target="_blank" rel="noopener">Roadshows</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="trust">
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Goverance&amp;OperatingModel.aspx" target="_blank" rel="noopener">Governance Framework</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Guidelines%20&amp;%20Policies.aspx" target="_blank" rel="noopener">Policy &amp; Principles</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="community">
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Latest-Updates.aspx" target="_blank" rel="noopener">Events &amp; Updates</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Contact-Us.aspx" target="_blank" rel="noopener">Support</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav — same accordion pattern as the other pages. -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile" data-open="false">
+  <button class="mobile-nav-close btn-ghost" id="navClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+  </button>
+
+  <details class="mobile-accordion" open>
+    <summary>About<span class="mobile-accordion__marker" aria-hidden="true">–</span></summary>
+    <a href="about.html#purpose" aria-current="page">Our Purpose</a>
+    <a href="about.html#vision-mission">Vision &amp; Mission</a>
+    <a href="about.html#initiatives">Initiatives</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Explore<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="approved-tools.html">Platforms &amp; Tools</a>
+    <a href="https://warnermedia.sharepoint.com/sites/CollabToolsHub/SitePages/AI%20Tools%20-%20Connectors%20Offering.aspx" target="_blank" rel="noopener">Connectors &amp; Integrations</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Tool Guidance</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Studio<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_One-Tech-Intake-Portal.aspx" target="_blank" rel="noopener">Intake Portal</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Sandbox.aspx" target="_blank" rel="noopener">Sandbox</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Dex.aspx" target="_blank" rel="noopener">DEX</a>
+    <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/AI-Creative-Studio-Hub.aspx?csf=1&amp;web=1&amp;e=E3SuNr&amp;CID=ca6a32ae-9356-4eb2-bfb8-98ca24018188" target="_blank" rel="noopener">Creative Studio</a>
+    <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/ITHelpdeskHome.aspx" target="_blank" rel="noopener">Content Lab</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Developers<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Engineering-Standards.aspx" target="_blank" rel="noopener">Engineering Standards</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Learning<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="https://warnermedia.sharepoint.com/sites/mycareeratwbd/SitePages/LearnAI.aspx" target="_blank" rel="noopener">LearnAI@WBD</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Training &amp; Resources</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/AI-Roadshows.aspx" target="_blank" rel="noopener">Roadshows</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Trust<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Goverance&amp;OperatingModel.aspx" target="_blank" rel="noopener">Governance Framework</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Guidelines%20&amp;%20Policies.aspx" target="_blank" rel="noopener">Policy &amp; Principles</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Community<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Latest-Updates.aspx" target="_blank" rel="noopener">Events &amp; Updates</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Contact-Us.aspx" target="_blank" rel="noopener">Support</a>
+  </details>
+</nav>
+
+<main id="main">
+
+  <!-- ======================= PAGE HEADER (compact brand-blue band) ======================= -->
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow eyebrow--accent">About</p>
+      <h1>About AI Central</h1>
+      <p>The team, the purpose and the roadmap behind Skydance's AI Center of Excellence.</p>
+    </div>
+  </section>
+
+  <!-- ======================= OUR PURPOSE ======================= -->
+  <section id="purpose" class="about-intro">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--accent">Our Purpose</p>
+          <h2>Why AI Central exists.</h2>
+          <p>
+            Skydance AI Central is Skydance's center of excellence for artificial intelligence — the single front
+            door responsible for making AI easy, safe and valuable to use across the organization. We evaluate,
+            approve and operate the platforms and tools our people rely on every day, set the policies that keep
+            that work responsible, and run the training that helps every team build real AI fluency — so no one
+            has to figure out AI adoption on their own.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= VISION & MISSION (brand-blue band, two copy columns) ======================= -->
+  <section id="vision-mission" class="about-band">
+    <div class="container vm-grid">
+      <div class="about-band__copy">
+        <p class="eyebrow eyebrow--accent">Our Vision</p>
+        <h2>An AI-powered enterprise.</h2>
+        <p class="about-band__desc">
+          To transform our organization into an AI-powered enterprise — where cutting-edge intelligence fuels
+          innovation, empowers every decision, and delivers game-changing outcomes at global scale.
+        </p>
+      </div>
+      <div class="about-band__copy">
+        <p class="eyebrow eyebrow--accent">Our Mission</p>
+        <h2>AI access, made simple.</h2>
+        <p class="about-band__desc">
+          To give every Skydance team fast, clear and responsible access to the AI platforms, tools and guidance
+          they need to work smarter — so adopting AI is simple and safe by default, not something each team has
+          to navigate alone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= INITIATIVES (mock/placeholder — reuses the Approved
+       Tools directory's .tool-card shell, minus the action row, since none of
+       these have a real destination link yet) ======================= -->
+  <section id="initiatives" class="initiatives">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--accent">Initiatives</p>
+          <h2>What we're working on.</h2>
+          <p>A snapshot of the programs AI Central is driving right now — placeholder status for this prototype, final copy and live tracking to follow.</p>
+        </div>
+      </div>
+
+      <div class="tools-grid">
+        <article class="tool-card">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--available">Active</span>
+          </div>
+          <span class="tool-card__name">Agentic AI Discovery Workshops</span>
+          <span class="tool-card__desc">Hands-on sessions helping teams scope a real problem and map it to an approved tool or platform.</span>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="3" rx="1"></rect><rect width="7" height="7" x="14" y="14" rx="1"></rect><rect width="7" height="7" x="3" y="14" rx="1"></rect></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--dual">In progress</span>
+          </div>
+          <span class="tool-card__name">Enterprise Platform Expansion</span>
+          <span class="tool-card__desc">Scaling the One Tech Intake Portal, AI Sandbox, AI DEX and AI Creative Studio to every business unit.</span>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+            </span>
+            <span class="tool-card__badge tool-card__badge--available">Active</span>
+          </div>
+          <span class="tool-card__name">Responsible AI Governance Framework</span>
+          <span class="tool-card__desc">Defining the review, approval and risk framework that governs how AI is built and used across Skydance.</span>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-card__top">
+            <span class="platform-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"></path><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"></path></svg>
+            </span>
+            <span class="tool-card__badge">Ongoing</span>
+          </div>
+          <span class="tool-card__name">AI Literacy &amp; Learning Program</span>
+          <span class="tool-card__desc">Role-based curricula, roadshows and office hours to build real AI fluency across every team.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER (shared) ======================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo/skydance-logo-white.png" alt="Skydance" />
+        <p>AI Central. Approved tools, guidance and support for building responsibly with AI.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="about.html" aria-current="page">About</a>
+        <a href="index.html#platforms">Explore</a>
+        <a href="index.html#platforms">Studio</a>
+        <a href="https://warnermedia.sharepoint.com/sites/mycareeratwbd/SitePages/LearnAI.aspx" target="_blank" rel="noopener">Learning</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Goverance&amp;OperatingModel.aspx" target="_blank" rel="noopener">Trust</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Community_Landing.aspx" target="_blank" rel="noopener">Community</a>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Skydance. All rights reserved. This hub is part of the Skydance–WBD integration; employee data is governed by your company's existing workforce privacy notice.</span>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

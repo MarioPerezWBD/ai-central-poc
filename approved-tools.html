@@ -30,13 +30,16 @@
 
     <nav class="main-nav" id="mainNav" aria-label="Primary">
       <div class="nav-item" data-panel="about">
-        <a class="nav-trigger" href="index.html#about" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">About<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+        <a class="nav-trigger" href="about.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">About<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
       </div>
       <div class="nav-item" data-panel="explore">
         <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout" aria-current="page">Explore<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
       </div>
       <div class="nav-item" data-panel="studio">
         <a class="nav-trigger" href="index.html#platforms" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Studio<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
+      </div>
+      <div class="nav-item" data-panel="developers">
+        <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Developers<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
       </div>
       <div class="nav-item" data-panel="learning">
         <a class="nav-trigger" href="index.html" aria-haspopup="true" aria-expanded="false" aria-controls="navFlyout">Learning<svg class="nav-trigger__chevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></a>
@@ -70,9 +73,9 @@
   <div class="nav-flyout" id="navFlyout" aria-hidden="true">
     <div class="nav-flyout__inner">
       <div class="nav-flyout__col" data-panel="about">
-        <a href="index.html#about">Our Purpose</a>
-        <a href="index.html#about">Vision &amp; Mission</a>
-        <a href="index.html#about">Initiatives</a>
+        <a href="about.html#purpose">Our Purpose</a>
+        <a href="about.html#vision-mission">Vision &amp; Mission</a>
+        <a href="about.html#initiatives">Initiatives</a>
       </div>
       <div class="nav-flyout__col" data-panel="explore">
         <!-- Merged with what used to be a separate "Approved AI Tools" link
@@ -80,15 +83,17 @@
              "Platforms & Tools" destination, so the merged item just points
              to itself here instead of back to the home page's section. -->
         <a href="approved-tools.html" aria-current="page">Platforms &amp; Tools</a>
-        <a href="#">Connectors &amp; Integrations</a>
-        <a href="#">Tool Guidance</a>
+        <a href="https://warnermedia.sharepoint.com/sites/CollabToolsHub/SitePages/AI%20Tools%20-%20Connectors%20Offering.aspx" target="_blank" rel="noopener">Connectors &amp; Integrations</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Tool Guidance</a>
       </div>
       <div class="nav-flyout__col" data-panel="studio">
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_One-Tech-Intake-Portal.aspx" target="_blank" rel="noopener">Intake Portal</a>
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Sandbox.aspx" target="_blank" rel="noopener">Sandbox</a>
-        <a href="https://dex.wbd.com/" target="_blank" rel="noopener">DEX</a>
+        <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Dex.aspx" target="_blank" rel="noopener">DEX</a>
         <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/AI-Creative-Studio-Hub.aspx?csf=1&amp;web=1&amp;e=E3SuNr&amp;CID=ca6a32ae-9356-4eb2-bfb8-98ca24018188" target="_blank" rel="noopener">Creative Studio</a>
-        <a href="index.html#platforms">Content Lab</a>
+        <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/ITHelpdeskHome.aspx" target="_blank" rel="noopener">Content Lab</a>
+      </div>
+      <div class="nav-flyout__col" data-panel="developers">
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Engineering-Standards.aspx" target="_blank" rel="noopener">Engineering Standards</a>
       </div>
       <div class="nav-flyout__col" data-panel="learning">
@@ -97,10 +102,8 @@
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/AI-Roadshows.aspx" target="_blank" rel="noopener">Roadshows</a>
       </div>
       <div class="nav-flyout__col" data-panel="trust">
-        <a href="#">Responsible AI</a>
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Goverance&amp;OperatingModel.aspx" target="_blank" rel="noopener">Governance Framework</a>
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Guidelines%20&amp;%20Policies.aspx" target="_blank" rel="noopener">Policy &amp; Principles</a>
-        <a href="#">Reviews &amp; Approvals</a>
       </div>
       <div class="nav-flyout__col" data-panel="community">
         <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Latest-Updates.aspx" target="_blank" rel="noopener">Events &amp; Updates</a>
@@ -119,23 +122,26 @@
 
   <details class="mobile-accordion">
     <summary>About<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
-    <a href="index.html#about">Our Purpose</a>
-    <a href="index.html#about">Vision &amp; Mission</a>
-    <a href="index.html#about">Initiatives</a>
+    <a href="about.html#purpose">Our Purpose</a>
+    <a href="about.html#vision-mission">Vision &amp; Mission</a>
+    <a href="about.html#initiatives">Initiatives</a>
   </details>
   <details class="mobile-accordion" open>
     <summary>Explore<span class="mobile-accordion__marker" aria-hidden="true">–</span></summary>
     <a href="approved-tools.html" aria-current="page">Platforms &amp; Tools</a>
-    <a href="#">Connectors &amp; Integrations</a>
-    <a href="#">Tool Guidance</a>
+    <a href="https://warnermedia.sharepoint.com/sites/CollabToolsHub/SitePages/AI%20Tools%20-%20Connectors%20Offering.aspx" target="_blank" rel="noopener">Connectors &amp; Integrations</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Cirriculum.aspx" target="_blank" rel="noopener">Tool Guidance</a>
   </details>
   <details class="mobile-accordion">
     <summary>Studio<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_One-Tech-Intake-Portal.aspx" target="_blank" rel="noopener">Intake Portal</a>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Sandbox.aspx" target="_blank" rel="noopener">Sandbox</a>
-    <a href="https://dex.wbd.com/" target="_blank" rel="noopener">DEX</a>
+    <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Home_AI-Dex.aspx" target="_blank" rel="noopener">DEX</a>
     <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/AI-Creative-Studio-Hub.aspx?csf=1&amp;web=1&amp;e=E3SuNr&amp;CID=ca6a32ae-9356-4eb2-bfb8-98ca24018188" target="_blank" rel="noopener">Creative Studio</a>
-    <a href="index.html#platforms">Content Lab</a>
+    <a href="https://warnermedia.sharepoint.com/sites/wbdcontentlab/SitePages/ITHelpdeskHome.aspx" target="_blank" rel="noopener">Content Lab</a>
+  </details>
+  <details class="mobile-accordion">
+    <summary>Developers<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/WBD-AI-Engineering-Standards.aspx" target="_blank" rel="noopener">Engineering Standards</a>
   </details>
   <details class="mobile-accordion">
@@ -146,18 +152,14 @@
   </details>
   <details class="mobile-accordion">
     <summary>Trust<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
-    <a href="#">Responsible AI</a>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Goverance&amp;OperatingModel.aspx" target="_blank" rel="noopener">Governance Framework</a>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Guidelines%20&amp;%20Policies.aspx" target="_blank" rel="noopener">Policy &amp; Principles</a>
-    <a href="#">Reviews &amp; Approvals</a>
   </details>
   <details class="mobile-accordion">
     <summary>Community<span class="mobile-accordion__marker" aria-hidden="true">+</span></summary>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Latest-Updates.aspx" target="_blank" rel="noopener">Events &amp; Updates</a>
     <a href="https://warnermedia.sharepoint.com/sites/WBDAICentral/SitePages/Contact-Us.aspx" target="_blank" rel="noopener">Support</a>
   </details>
-
-  <a class="btn btn-gold" href="index.html#request-access">Request access</a>
 </nav>
 
 <main id="main">
@@ -597,7 +599,7 @@
         <p>AI Central. Approved tools, guidance and support for building responsibly with AI.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="index.html#about">About</a>
+        <a href="about.html">About</a>
         <a href="index.html#platforms">Explore</a>
         <a href="index.html#platforms">Studio</a>
         <a href="https://warnermedia.sharepoint.com/sites/mycareeratwbd/SitePages/LearnAI.aspx" target="_blank" rel="noopener">Learning</a>

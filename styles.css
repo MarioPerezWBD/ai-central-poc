@@ -419,7 +419,8 @@ body {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  width: min(300px, 88vw);
+  width: 300px;
+  max-width: 88vw;
   background: #0a0a10;
   border: 1px solid var(--border-strong);
   box-shadow: var(--shadow-card);
@@ -465,8 +466,16 @@ body {
 
 .mobile-nav {
   position: fixed;
-  inset: 0 0 0 auto;
-  width: min(360px, 88vw);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* width + max-width (not width: min(360px, 88vw)) — functionally the
+     same end result, but plain longhands here instead of a function
+     nested inside another function, to rule out any engine-specific quirk
+     with that combination as a possible cause of the panel failing to
+     render on some devices. */
+  width: 360px;
+  max-width: 88vw;
   background: #050507;
   border-left: 1px solid var(--border-hairline);
   padding: var(--space-6) var(--space-5);
@@ -490,8 +499,6 @@ body {
   margin-bottom: var(--space-2);
   display: inline-flex; align-items: center; justify-content: center;
 }
-.mobile-nav > .btn { width: 100%; margin-top: var(--space-2); }
-
 .mobile-accordion {
   border-bottom: 1px solid var(--border-hairline);
   padding-block: var(--space-2);
@@ -1191,6 +1198,27 @@ section { padding-block: var(--space-7); }
 }
 
 /* ==========================================================================
+   ABOUT PAGE — "Our Purpose" intro, "Vision & Mission" (reuses the
+   .about-band gradient band, two copy columns instead of one), and
+   "Initiatives" (reuses .tools-grid/.tool-card — same card shell as the
+   Approved Tools directory, just without the action row, since these are
+   placeholder/mock entries with no real destination yet).
+   ========================================================================== */
+.about-intro { background: var(--bg-base); }
+
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+}
+
+.initiatives { background: var(--bg-base); }
+/* Mock/placeholder data — no real destination yet, so these cards reuse
+   .tool-card's shell but skip its .tool-card__actions row entirely; the
+   status pill in .tool-card__top stands in for the badge that row would
+   normally carry. */
+
+/* ==========================================================================
    TOOLS DIRECTORY — Approved AI Tools page. Filterable catalogue of every
    platform and tool cleared for use, each card showing its real access
    path (view guidelines / request access / already open) instead of a
@@ -1609,6 +1637,7 @@ section { padding-block: var(--space-7); }
    ========================================================================== */
 @media (max-width: 1080px) {
   .about-band__grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .vm-grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .metric-grid { max-width: 560px; }
   .spotlight-updates__grid { grid-template-columns: 1fr; gap: var(--space-7); }
   /* Stacked full-width now, so the link-card grid can afford a third
