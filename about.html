@@ -14,11 +14,13 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Cosmos background (fixed, behind everything). On this page it's only
-     visible through the compact page-header band at the top; every section
-     below has its own opaque surface, same rule as the other pages. -->
+<!-- Cosmos background (fixed, behind everything). Never actually visible on
+     this page — the "Our Purpose" hero's own photo covers the full viewport
+     height immediately below the nav, same opaque-section rule as every
+     other page. Kept in the markup for structural consistency. -->
 <div class="cosmos" aria-hidden="true"></div>
 <div class="cosmos-scrim-top" aria-hidden="true"></div>
+
 
 <!-- ======================= HEADER (shared across pages) ======================= -->
 <header class="site-header">
@@ -160,49 +162,50 @@
 
 <main id="main">
 
-  <!-- ======================= PAGE HEADER (compact brand-blue band) ======================= -->
-  <section class="page-header">
-    <div class="container">
-      <p class="eyebrow eyebrow--accent">About</p>
-      <h1>About AI Central</h1>
-      <p>The team, the purpose and the roadmap behind Skydance's AI Center of Excellence.</p>
-    </div>
-  </section>
-
-  <!-- ======================= OUR PURPOSE ======================= -->
-  <section id="purpose" class="about-intro">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow eyebrow--accent">Our Purpose</p>
-          <h2>Why AI Central exists.</h2>
-          <p>
-            Skydance AI Central is Skydance's center of excellence for artificial intelligence — the single front
-            door responsible for making AI easy, safe and valuable to use across the organization. We evaluate,
-            approve and operate the platforms and tools our people rely on every day, set the policies that keep
-            that work responsible, and run the training that helps every team build real AI fluency — so no one
-            has to figure out AI adoption on their own.
-          </p>
-        </div>
+  <!-- ======================= OUR PURPOSE (big photo hero — doubles as the page's
+       H1, nav sits directly over it; no separate compact page-header band,
+       per the "big sections" ideation reference) ======================= -->
+  <section id="purpose" class="about-hero about-hero--purpose about-hero--left">
+    <div class="about-hero__media" aria-hidden="true"></div>
+    <div class="about-hero__inner">
+      <div class="about-hero__content">
+        <p class="eyebrow eyebrow--accent">Our Purpose</p>
+        <h1>Why AI Central <span class="accent">exists.</span></h1>
+        <p class="about-hero__desc">
+          Skydance AI Central is Skydance's center of excellence for artificial intelligence — the single front
+          door responsible for making AI easy, safe and valuable to use across the organization. We evaluate,
+          approve and operate the platforms and tools our people rely on every day, set the policies that keep
+          that work responsible, and run the training that helps every team build real AI fluency — so no one
+          has to figure out AI adoption on their own.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ======================= VISION & MISSION (brand-blue band, two copy columns) ======================= -->
-  <section id="vision-mission" class="about-band">
-    <div class="container vm-grid">
-      <div class="about-band__copy">
+  <!-- ======================= OUR VISION (big photo hero) ======================= -->
+  <section id="vision-mission" class="about-hero about-hero--vision about-hero--right">
+    <div class="about-hero__media" aria-hidden="true"></div>
+    <div class="about-hero__inner">
+      <div class="about-hero__content">
         <p class="eyebrow eyebrow--accent">Our Vision</p>
-        <h2>An AI-powered enterprise.</h2>
-        <p class="about-band__desc">
+        <h2>An AI-powered <span class="accent">enterprise.</span></h2>
+        <p class="about-hero__desc">
           To transform our organization into an AI-powered enterprise — where cutting-edge intelligence fuels
           innovation, empowers every decision, and delivers game-changing outcomes at global scale.
         </p>
       </div>
-      <div class="about-band__copy">
+    </div>
+  </section>
+
+  <!-- ======================= OUR MISSION (big photo hero — text on the left,
+       same rhythm as Purpose; lighthouses sit on the right) ======================= -->
+  <section class="about-hero about-hero--mission about-hero--left">
+    <div class="about-hero__media" aria-hidden="true"></div>
+    <div class="about-hero__inner">
+      <div class="about-hero__content">
         <p class="eyebrow eyebrow--accent">Our Mission</p>
-        <h2>AI access, made simple.</h2>
-        <p class="about-band__desc">
+        <h2>AI access, <span class="accent">made simple.</span></h2>
+        <p class="about-hero__desc">
           To give every Skydance team fast, clear and responsible access to the AI platforms, tools and guidance
           they need to work smarter — so adopting AI is simple and safe by default, not something each team has
           to navigate alone.
@@ -219,7 +222,7 @@
       <div class="section-head">
         <div>
           <p class="eyebrow eyebrow--accent">Initiatives</p>
-          <h2>What we're working on.</h2>
+          <h2>What we're <span class="accent">working on.</span></h2>
           <p>A snapshot of the programs AI Central is driving right now — placeholder status for this prototype, final copy and live tracking to follow.</p>
         </div>
       </div>

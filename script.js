@@ -482,4 +482,8 @@
       if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   });
+
+  /* About-page hero photo motion is now a pure-CSS Ken Burns zoom (see
+     .about-hero__media / @keyframes heroKenBurns in styles.css) — no JS
+     needed, so there's nothing here to silently fail to run. */
 })();

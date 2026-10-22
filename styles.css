@@ -591,7 +591,10 @@ body {
   letter-spacing: var(--tracking-display);
   color: var(--text-headline);
 }
-.hero h1 .accent {
+.hero h1 .accent,
+.about-hero h1 .accent,
+.about-hero h2 .accent,
+.section-head h2 .accent {
   background: var(--grad-gold-cta);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1198,18 +1201,164 @@ section { padding-block: var(--space-7); }
 }
 
 /* ==========================================================================
-   ABOUT PAGE — "Our Purpose" intro, "Vision & Mission" (reuses the
-   .about-band gradient band, two copy columns instead of one), and
-   "Initiatives" (reuses .tools-grid/.tool-card — same card shell as the
-   Approved Tools directory, just without the action row, since these are
-   placeholder/mock entries with no real destination yet).
+   ABOUT PAGE — big photographic hero bands for "Our Purpose", "Our Vision"
+   and "Our Mission", modeled on the AI CoE Site research FigJam ideation
+   board. Each band is full-bleed stock photography with a slow, continuous
+   CSS-only Ken Burns zoom (.about-hero__media / @keyframes heroKenBurns —
+   no JS, nothing to silently fail to run), plus a wide directional
+   black-opacity wash (::before) laid directly over the photo — no card, no
+   blur — so headline/body text clears WCAG AA the same way the reference
+   does: a confidently dark zone that blends into the visible photo, not a
+   floating panel. Stock photos (assets/about/, free Unsplash License) are a
+   placeholder for real brand photography.
+   "Initiatives" below still reuses .tools-grid/.tool-card — same card shell
+   as the Approved Tools directory, just without the action row, since these
+   are placeholder/mock entries with no real destination yet.
    ========================================================================== */
-.about-intro { background: var(--bg-base); }
+.about-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(440px, 54vw, 640px);
+  overflow: hidden;
+  /* No static border-bottom anymore — the section boundary is the animated
+     gold-halo divider in .about-hero::after below. */
+}
+/* The photo lives on its own layer so the scrim/text sitting on top of it
+   never gets dragged into its animation. A small overscan (inset) keeps
+   anti-aliased edges from ever peeking in during the zoom. Each section
+   gets its own duration/negative delay so the three photos breathe out of
+   sync with each other instead of all zooming in lockstep. transform
+   alternates (0%→100%→0%, "ida y vuelta") forever, looping infinitely. */
+.about-hero__media {
+  position: absolute;
+  inset: -6% 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: heroKenBurns 13s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.about-hero--purpose .about-hero__media { animation-duration: 15s; }
+.about-hero--vision .about-hero__media { animation-duration: 10s; animation-delay: -3s; }
+.about-hero--mission .about-hero__media { animation-duration: 12s; animation-delay: -6s; }
 
-.vm-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-7);
+@keyframes heroKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+/* Animated divider between hero sections — a thin, mostly-black line with a
+   slow gold halo that sweeps across it on an endless loop, like a glint of
+   light traveling through the border. Lives on ::after (not a real border)
+   so it adds zero padding/layout weight and sits flush on the section's own
+   bottom edge — exactly at each section interval. */
+.about-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(5, 5, 7, 0.95) 0%,
+    rgba(5, 5, 7, 0.95) 38%,
+    var(--sky-gold-100) 50%,
+    rgba(5, 5, 7, 0.95) 62%,
+    rgba(5, 5, 7, 0.95) 100%
+  );
+  background-size: 280% 100%;
+  animation: heroDividerHalo 6s linear infinite;
+}
+
+@keyframes heroDividerHalo {
+  0% { background-position: 140% 0; }
+  100% { background-position: -140% 0; }
+}
+.about-hero::before {
+  /* The actual contrast fix: a wide, confident black-opacity wash straight
+     over the photo (~45% of the section is solidly dark, then it blends
+     into the visible image over a soft band) — same technique as the
+     reference, not a bounded card. Percentage-based stops stay correct at
+     any viewport width because .about-hero__inner is anchored to the true
+     edge, not the site's centered 1320px column. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.about-hero--left::before {
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 7, 0.94) 0%,
+    rgba(5, 5, 7, 0.88) 32%,
+    rgba(5, 5, 7, 0.55) 48%,
+    rgba(5, 5, 7, 0.12) 66%,
+    rgba(5, 5, 7, 0) 82%
+  );
+}
+.about-hero--right::before {
+  background: linear-gradient(
+    270deg,
+    rgba(5, 5, 7, 0.94) 0%,
+    rgba(5, 5, 7, 0.88) 32%,
+    rgba(5, 5, 7, 0.55) 48%,
+    rgba(5, 5, 7, 0.12) 66%,
+    rgba(5, 5, 7, 0) 82%
+  );
+}
+/* Full-bleed row, NOT capped at --max-width — the text anchors to the
+   actual viewport edge (minus this padding) so the left/right alternation
+   stays visually obvious at any screen width, instead of being confined
+   inside the site's centered 1320px content column. */
+.about-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding-inline: clamp(24px, 6vw, 96px);
+}
+.about-hero--left .about-hero__inner { justify-content: flex-start; }
+.about-hero--right .about-hero__inner { justify-content: flex-end; }
+.about-hero__content { max-width: 480px; }
+.about-hero .eyebrow { margin-bottom: var(--space-3); }
+.about-hero h1,
+.about-hero h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-headline);
+  line-height: 1.12;
+  margin-bottom: var(--space-4);
+}
+.about-hero__desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--fs-body-lg);
+  line-height: 1.65;
+}
+.about-hero--purpose .about-hero__media { background-image: url('assets/about/purpose-earth.jpg'); background-position: 78% center; }
+/* Vision: copy sits right (dark scrim right) — frame keeps the photo's empty
+   black on the left and the circuit / gold ring readable center-right. */
+.about-hero--vision .about-hero__media { background-image: url('assets/about/vision-circuit.jpg'); background-position: 72% center; }
+/* Mission: copy sits left — lighthouses + starry coast read on the right;
+   vertical bias keeps the horizon in the lower third. */
+.about-hero--mission .about-hero__media { background-image: url('assets/about/mission-lighthouses.jpg'); background-position: 68% 42%; }
+
+@media (max-width: 760px) {
+  .about-hero { min-height: 460px; }
+  .about-hero--left::before,
+  .about-hero--right::before {
+    background: linear-gradient(180deg, rgba(5, 5, 7, 0.3) 0%, rgba(5, 5, 7, 0.94) 72%);
+  }
+  .about-hero__inner { padding-inline: var(--space-5); justify-content: flex-start !important; }
+  .about-hero__content { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero__media { animation: none !important; }
+  .about-hero::after { animation: none !important; background-position: 50% 0; }
 }
 
 .initiatives { background: var(--bg-base); }
@@ -1637,7 +1786,6 @@ section { padding-block: var(--space-7); }
    ========================================================================== */
 @media (max-width: 1080px) {
   .about-band__grid { grid-template-columns: 1fr; gap: var(--space-5); }
-  .vm-grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .metric-grid { max-width: 560px; }
   .spotlight-updates__grid { grid-template-columns: 1fr; gap: var(--space-7); }
   /* Stacked full-width now, so the link-card grid can afford a third
